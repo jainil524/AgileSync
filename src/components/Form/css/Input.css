@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Calibri:wght@400;500;700&display=swap');
+
+.input-wrapper {
+    font-family: Calibri;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+    width: 100%;
+    margin:.3rem 0;
+}
+
+.input-wrapper label {
+    font-size: .9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+    
+.input-wrapper input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #00a2ff07;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input-wrapper:has(.error) input {
+    border-color: red;
+    box-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
+}
+
+.input-wrapper input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.input-wrapper .error {
+    width:100%;
+    font-weight: 200;
+    font-size: 0.78rem;
+    color: red;
+}

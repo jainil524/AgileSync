@@ -1,0 +1,16 @@
+.column {
+    flex: 0 0 30%;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.card-list {
+    min-height: 100px;
+}
+
+.column h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}

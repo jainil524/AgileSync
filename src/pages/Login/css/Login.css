@@ -1,0 +1,25 @@
+.Login-wrapper{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-shrink: 0;
+    /* background-color: #f0f0f0; */
+}
+
+.Login-wrapper .LoginForm{
+    width: 30rem;
+}
+
+.Login-wrapper div{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.Login-wrapper .title{
+    width: 100%;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
