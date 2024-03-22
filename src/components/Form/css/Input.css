@@ -41,3 +41,11 @@
     font-size: 0.78rem;
     color: red;
 }
+
+.input-wrapper:has(input.mandatory) label::after {
+    content: '*';
+    margin-left: 0.3rem;
+    color: red;
+    user-select: none;
+    -webkit-user-drag: none; 
+}

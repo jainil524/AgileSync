@@ -11,7 +11,7 @@ function Input({ label = null, type, placeholder, id = null, change, classes = [
                 id={id}
                 type={type}
                 placeholder={placeholder}
-                className={classes.join(' ')}
+                className={classes}
                 value={value}
                 onChange={(e)=> change(prev => e.target.value)}
             />

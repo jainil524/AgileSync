@@ -2,7 +2,9 @@ function useFieldValidator(Fields) {
     
     let FieldFunction = {
         "email": validateEmail,
-        "password": passwordValidator
+        "password": passwordValidator,
+        "name": textValidator,
+        "text": textValidator
     };
     
     if(Fields.length === 0) return [true, true];
@@ -60,6 +62,18 @@ function passwordValidator(password) {
     return true;
 }
 
+function textValidator(name){
+    if(name.length === 0) return "Name is required";
+    
+
+    let textFormatChecker = /^[a-zA-Z]+$/;
+
+
+    if(!textFormatChecker.test(name)) return "Name must contain only alphabets";
+    
+    return true;
+
+}
 
 
 export default useFieldValidator
