@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Projects from '../pages/Projects/Projects';
+import ProjectsList from '../pages/Projects/ProjectsList';
 
 
 function ProjectsLayout() {
@@ -8,7 +8,7 @@ function ProjectsLayout() {
 
   return (
     <>
-      <Projects/>
+      <ProjectsList/>
       <Outlet/>
     </>
   )

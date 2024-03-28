@@ -44,7 +44,7 @@ function Login() {
 
 
         // If validation passes, proceed with form submission
-        const p = fetchRequest("http://localhost:3000/login", { method: "POST", body: JSON.stringify({ email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
+        const p = fetchRequest("https://backend.agilesync.co/login", { method: "POST", body: JSON.stringify({ email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
         p.then((data) => {
             
             if(data.error){

@@ -1,10 +1,20 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Navigate, useNavigate, Route, Routes } from 'react-router-dom';
 import Login from './pages/Auth/Login/Login';
 import IndexRoutes from './routes/IndexRoutes';
 import Register from './pages/Auth/Register/Register';
+import { UserContext } from './contexts/UserContext';
 
 function App() {
+  const {user} = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(!user){
+      navigate("/login");
+    }
+  })
+
   return (
     <>
       <Routes>

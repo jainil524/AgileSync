@@ -1,4 +1,3 @@
-// Login.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 
@@ -10,6 +9,7 @@ import useFieldValidator from '../../../hooks/useFieldValidator';
 import {UserContext} from '../../../contexts/UserContext';
 import { useEffect } from 'react';
 import '../css/Login.css';
+import { useCookies } from 'react-cookie';
 
 function Login() {
     const [Name, setName] = useState('');
@@ -18,14 +18,10 @@ function Login() {
     const [nameError, setNameError] = useState(null);
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
+    
     const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        let userDetails = { username: Email.split("@")[0], email: Email}
-        localStorage.setItem("user",userDetails.username);
-        setUser(userDetails);
-    }, [Email]);
+    const [cookies, setCookie] = useCookies(['token']);
 
     function handleSubmit(e, setFormError) {
         e.preventDefault();
@@ -44,14 +40,20 @@ function Login() {
             return;
         }
 
-
         // If validation passes, proceed with form submission
-        const p = fetchRequest("http://localhost:3000/login", { method: "POST", body: JSON.stringify({ email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
+        const p = fetchRequest("https://backend.agilesync.co/register", { method: "POST", body: JSON.stringify({ name: Name, email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
         p.then((data) => {
             
-            if(data.error){
+            if(data.status !== "success"){
                 setFormError(data.error);
             }else{
+                setCookie('token', data.token, { path: '/' });
+                let data2 = {
+                    name: Name,
+                    email: Email,
+                    token: data.token
+                };
+                setUser(data2);
                 navigate("/app");
             }
 

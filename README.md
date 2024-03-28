@@ -19,5 +19,6 @@ This project is a Kanban board built using React with advanced functionality, in
 1. Download the zip file or clone the repo.
 2. Load project into your Editor i.e. VSCode
 3. Open the terminal inside editor
-4. type 'npm i'
-5. to run the project type 'npm start'
+4. Goto inside of "AgileSync" Folder
+5. type 'npm i'
+6. to run the project type 'npm start'
