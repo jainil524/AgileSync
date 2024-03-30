@@ -5,7 +5,7 @@ function Form({ actionUrl, method, id = null, classes = [], children = [], Submi
 
     return (
         <form action={actionUrl} method={method} id={id} className={classes.join(" ")} onSubmit={(e)=> Submitfun(e,setFormError)}>
-            {formError && <span>{formError}</span>}
+            {formError && <p style={{"color":"red","padding":".6rem 0 1rem 0"}}>{formError}</p>}
             {children}
         </form>
     );

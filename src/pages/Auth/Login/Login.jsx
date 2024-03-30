@@ -1,6 +1,6 @@
-// Login.jsx
 import React, { useState, useContext } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 import Input from '../../../components/Form/InputBox/Input'
 import SubmitButton from '../../../components/Form/SubmitButton/SubmitButton';
@@ -9,6 +9,7 @@ import fetchRequest from '../../../utils/fetchAPIRequest';
 import useFieldValidator from '../../../hooks/useFieldValidator';
 import {UserContext} from '../../../contexts/UserContext';
 import { useEffect } from 'react';
+
 import '../css/Login.css';
 
 function Login() {
@@ -17,6 +18,8 @@ function Login() {
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
     const { setUser } = useContext(UserContext);
+    const [cookies, setCookie] = useCookies(['token']);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -46,10 +49,15 @@ function Login() {
         // If validation passes, proceed with form submission
         const p = fetchRequest("https://backend.agilesync.co/login", { method: "POST", body: JSON.stringify({ email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
         p.then((data) => {
-            
-            if(data.error){
-                setFormError(data.error);
+            console.log(data);
+            if(data.status !== "success"){
+                setFormError(data.message);
             }else{
+                setCookie('token', data.token, { path: '/' });
+                let data2 = {
+                    token: data.token,
+                };
+                setUser(data2);
                 navigate("/app");
             }
 
@@ -67,7 +75,7 @@ function Login() {
                 <div className="LoginForm">
 
                     <h2 className='Title'>AglieSync Login</h2>
-                    <Form actionUrl="http://localhost:3000/login" method="post" Submitfun={handleSubmit}>
+                    <Form Submitfun={handleSubmit}>
                         <div>
                             <Input label="Email" id="email" type="email" placeholder="Enter your email" change={setEmail} error={emailError} classes='input-box mandatory' />
                         </div>

@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Routes, Route } from "react-router-dom"
 
-import Dashboard from "../pages/Projects/Dashboard/Dashboard"
-import KanbanBoard from "../pages/Projects/Kanban/KanbanBoard"
+import Dashboard from "../pages/Projects/Project/Dashboard/Dashboard"
+import KanbanBoard from "../pages/Projects/Project/Kanban/KanbanBoard"
 import Teammates from "../pages/Projects/TeamMates/Teammates"
 import ProjectsLayout from '../layouts/ProjectsLayout'
 

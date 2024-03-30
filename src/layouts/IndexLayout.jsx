@@ -6,10 +6,6 @@ import Header from '../components/Navbar/Header';
 function IndexLayout() {
   const navigate = useNavigate();
 
-  if (localStorage.getItem('user') == null || localStorage.getItem('user') == '') {
-    navigate('/login');
-  }
-
   return (
     <>
       <Header />

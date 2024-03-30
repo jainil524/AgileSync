@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 import Input from '../../../components/Form/InputBox/Input'
 import SubmitButton from '../../../components/Form/SubmitButton/SubmitButton';
@@ -7,9 +8,8 @@ import Form from '../../../components/Form/Form';
 import fetchRequest from '../../../utils/fetchAPIRequest';
 import useFieldValidator from '../../../hooks/useFieldValidator';
 import {UserContext} from '../../../contexts/UserContext';
-import { useEffect } from 'react';
 import '../css/Login.css';
-import { useCookies } from 'react-cookie';
+
 
 function Login() {
     const [Name, setName] = useState('');
@@ -49,9 +49,7 @@ function Login() {
             }else{
                 setCookie('token', data.token, { path: '/' });
                 let data2 = {
-                    name: Name,
-                    email: Email,
-                    token: data.token
+                    token: data.token,
                 };
                 setUser(data2);
                 navigate("/app");
@@ -71,7 +69,7 @@ function Login() {
                 <div className="LoginForm">
 
                     <h2 className='Title'>AglieSync Register</h2>
-                    <Form actionUrl="http://localhost:3000/login" method="post" Submitfun={handleSubmit}>
+                    <Form Submitfun={handleSubmit}>
                         <div>
                             <Input label="Name" id="name" type="text" placeholder="Enter your Name" change={setName} error={nameError} classes='input-box mandatory' />
 

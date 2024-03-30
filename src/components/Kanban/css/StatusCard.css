@@ -1,16 +1,16 @@
-.column {
+.status {
+    width: 10rem;
     flex: 0 0 30%;
-    background-color: #f4f4f4;
+    background-color: #e6e6e6;
     border-radius: 8px;
     padding: 10px;
-    margin-right: 20px;
 }
 
-.card-list {
+.task-list {
     min-height: 100px;
 }
 
-.column h3 {
+.status h3 {
     margin-top: 0;
     margin-bottom: 10px;
 }

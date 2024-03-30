@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import './css/Header.css';
 
@@ -7,18 +7,18 @@ function Header() {
     return (
         <div className="header">
             <div className="header__logo">
-                <Link to="/app/dashboard">
-                    <h1>Home page</h1>
-                </Link>
+                <NavLink to="/app/dashboard">
+                    <img className='Logo-img' src="../../src/assets/img/AGILE-SYNC-LOGO.png" alt=''/>
+                </NavLink>
             </div>
             <div className="header__nav">
-                <Link to="/app/dashboard">Dashboard</Link>
-                <Link to="/app/projects">Projects</Link>
+                <NavLink to="/app/dashboard">Dashboard</NavLink>
+                <NavLink to="/app/projects">Projects</NavLink>
             </div>
             <div className="header__user">
-                <Link to="/app/profile">
+                <NavLink to="/app/profile">
                     <FaUserCircle />
-                </Link>
+                </NavLink>
             </div>
         </div>
     );

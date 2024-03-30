@@ -1,13 +1,24 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext';
 
+import "./css/Profile.css";
+
 function Profile() {
-  const {user} = useContext(UserContext);
+  const {logout} = useContext(UserContext);
   return (
-    <div>
-      Profile
-      <h1>Name: {user.name}</h1>
-      <h2>Email: {user.email}</h2>
+    <div className='mainContainer'>
+      <div className="themeimg">
+        <img src="../../src/assets/img/COVER_IMG1.webp" alt="" />
+      </div>
+      <div className="profile-wrapper">
+        <div className="left"></div>
+        <div className="right"></div>
+      </div>
+      {/* <button onClick={()=>{
+        logout();
+      }}>
+        LogOut
+      </button> */}
     </div>
   )
 }
