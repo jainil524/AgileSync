@@ -1,5 +1,8 @@
 import { Avatar, AvatarGroup } from "@mui/material";
+import { Link } from "react-router-dom";
 import React from "react";
+
+import changeDateFormat from "../../../utils/changeDateFormat";
 
 import "./css/ProjectList.css";
 
@@ -33,8 +36,8 @@ function ProjectsList() {
       status: "Completed",
       completed: "100%",
       nextMilestone: "N/A",
-      startDate: "01/01/2021",
-      endDate: "01/01/2022",
+      startDate: "01/06/2021",
+      endDate: "01/12/2022",
       teammates: [
         {
           userid: 4,
@@ -91,18 +94,19 @@ function ProjectsList() {
           </thead>
           <tbody>
             {rows.map((row, index) => (
+              
               <tr key={index}>
                 <td>{row.id}</td>
-                <td>{row.projectName}</td>
+                <td><Link style={{"color":"black",textDecoration:"none"}} to={`/app/project/${row.id}/dashboard`}>{row.projectName}</Link></td>
                 <td>{row.status}</td>
                 <td>{row.completed}</td>
                 <td>{row.nextMilestone}</td>
-                <td>{row.startDate} - {row.endDate}</td>
+                <td>{changeDateFormat(row.startDate)} - {changeDateFormat(row.endDate)}</td>
                 <td>
                   <AvatarGroup max={4}>
                     {
                       row.teammates.map((teammate, index) => (
-                        <Avatar alt={teammate.name} src={teammate.avatar} />
+                        <Avatar style={{"width":"30px","height":"30px"}} key={index} alt={teammate.name} src={teammate.avatar} />
                       ))
                     }
                   </AvatarGroup>

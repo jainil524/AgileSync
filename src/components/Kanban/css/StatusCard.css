@@ -1,16 +1,23 @@
 .status {
-    width: 10rem;
-    flex: 0 0 30%;
-    background-color: #e6e6e6;
+    min-width: 16.92rem;
+    height: min-content;
+    flex-basis: 0 0 1;
+    background-color: #eee;
     border-radius: 8px;
     padding: 10px;
 }
 
-.task-list {
-    min-height: 100px;
+.status h3 {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: -1rem;
+    left: 0;
+    z-index: 3;
+    background-color: #eee;
 }
 
-.status h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
+.task-list {
+    min-height: 100px;
 }

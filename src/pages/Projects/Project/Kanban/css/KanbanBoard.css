@@ -5,8 +5,8 @@
 }
 
 .board-body {
-    width:100%;
+    min-width:100%;
     display: flex;
     gap: 1rem;
-    /* padding: 20px; */
+    overflow-y: auto;
 }

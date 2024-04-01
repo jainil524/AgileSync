@@ -3,7 +3,7 @@ import { useNavigate,Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 import Input from '../../../components/Form/InputBox/Input'
-import SubmitButton from '../../../components/Form/SubmitButton/SubmitButton';
+import Button from '../../../components/UI/Button/Button';
 import Form from '../../../components/Form/Form';
 import fetchRequest from '../../../utils/fetchAPIRequest';
 import useFieldValidator from '../../../hooks/useFieldValidator';
@@ -18,10 +18,13 @@ function Login() {
     const [nameError, setNameError] = useState(null);
     const [emailError, setEmailError] = useState(null);
     const [passwordError, setPasswordError] = useState(null);
+    const [isfetching, setIsFetching] = useState(false);
     
     const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
     const [cookies, setCookie] = useCookies(['token']);
+
+    
 
     function handleSubmit(e, setFormError) {
         e.preventDefault();
@@ -40,6 +43,7 @@ function Login() {
             return;
         }
 
+        setIsFetching(true);
         // If validation passes, proceed with form submission
         const p = fetchRequest("https://backend.agilesync.co/register", { method: "POST", body: JSON.stringify({ name: Name, email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
         p.then((data) => {
@@ -55,7 +59,7 @@ function Login() {
                 navigate("/app");
             }
 
-
+            setIsFetching(false);
         }).catch((err) => {
             console.log(err);
         });
@@ -79,7 +83,7 @@ function Login() {
                             <Input label="Password" id="password" type="password" placeholder="Enter your password" change={setPassword} error={passwordError} classes='input-box mandatory' />
                         </div>
                         <div>
-                            <SubmitButton title="Register"/>
+                            <Button title="Register" hasLoading={isfetching} setclick={handleSubmitBtnClick}/>
                         </div>
                     </Form>
 

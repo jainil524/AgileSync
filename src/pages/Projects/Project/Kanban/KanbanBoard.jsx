@@ -21,6 +21,21 @@ function KanbanBoard() {
                 <Task title="TASK2"/>
                 <Task title="TASK3"/>
             </Status>
+            <Status title="DONE">
+                <Task title="TASK1"/>
+                <Task title="TASK4"/>
+            </Status>
+            <Status title="TESTING">
+                <Task title="TASK2"/>
+                <Task title="TASK4"/>
+                <Task title="TASK6"/>
+                <Task title="TASK2"/>
+                <Task title="TASK3"/>
+            </Status>
+            <Status title="DEPLOYED">
+                <Task title="TASK2"/>
+                <Task title="TASK3"/>
+            </Status>
         </div>
       </div>
     </>

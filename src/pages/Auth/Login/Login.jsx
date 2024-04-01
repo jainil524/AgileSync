@@ -1,16 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 import Input from '../../../components/Form/InputBox/Input'
-import SubmitButton from '../../../components/Form/SubmitButton/SubmitButton';
+import Button from '../../../components/UI/Button/Button'
 import Form from '../../../components/Form/Form';
 import fetchRequest from '../../../utils/fetchAPIRequest';
 import useFieldValidator from '../../../hooks/useFieldValidator';
 import {UserContext} from '../../../contexts/UserContext';
-import { useEffect } from 'react';
 
 import '../css/Login.css';
+
+
 
 function Login() {
     const [Email, setEmail] = useState('');
@@ -19,14 +20,8 @@ function Login() {
     const [passwordError, setPasswordError] = useState(null);
     const { setUser } = useContext(UserContext);
     const [cookies, setCookie] = useCookies(['token']);
-
+    const [isfetching, setIsFetching] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        let userDetails = { username: Email.split("@")[0], email: Email}
-        localStorage.setItem("user",userDetails.username);
-        setUser(userDetails);
-    }, [Email]);
 
     function handleSubmit(e, setFormError) {
         e.preventDefault();
@@ -44,8 +39,8 @@ function Login() {
         if(isEmailValid != true || isPasswordValid != true){
             return;
         }
-
-
+        
+        setIsFetching(true);
         // If validation passes, proceed with form submission
         const p = fetchRequest("https://backend.agilesync.co/login", { method: "POST", body: JSON.stringify({ email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
         p.then((data) => {
@@ -59,13 +54,12 @@ function Login() {
                 };
                 setUser(data2);
                 navigate("/app");
+                
             }
-
-
+            // setIsFetching(false);
         }).catch((err) => {
             console.log(err);
         });
-
 
     }
 
@@ -83,7 +77,7 @@ function Login() {
                             <Input label="Password" id="password" type="password" placeholder="Enter your password" change={setPassword} error={passwordError} classes='input-box mandatory' />
                         </div>
                         <div>
-                            <SubmitButton title="Login"/>
+                            <Button title="Login" hasLoading={isfetching} />
                         </div>
                     </Form>
 

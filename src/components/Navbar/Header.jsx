@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import './css/Header.css';
 
@@ -13,7 +13,7 @@ function Header() {
             </div>
             <div className="header__nav">
                 <NavLink to="/app/dashboard">Dashboard</NavLink>
-                <NavLink to="/app/projects">Projects</NavLink>
+                <NavLink to="/app/projectlist">Projects</NavLink>
             </div>
             <div className="header__user">
                 <NavLink to="/app/profile">

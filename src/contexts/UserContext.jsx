@@ -19,16 +19,18 @@ function UserContextProvider({ children }) {
         setUser({token:cookies.token});
 
         if(cookies.lastVisited != null || cookies.lastVisited != undefined){
-          navigate( decodeURI(cookies.lastVisited));
+          navigate(decodeURI(cookies.lastVisited));
         }else{
           navigate("/app");
         }
+      }else{
+        navigate("/login");
       }
     },[])
 
-    const logout = ()=>{
+    const logout = async ()=>{
       
-      fetchRequest(
+     await fetchRequest(
                     "https://backend.agilesync.co/logout",
                     {
                       method:"GET",
@@ -37,6 +39,12 @@ function UserContextProvider({ children }) {
                         "Authorization": cookies.token
                       }
                   }).then((data)=>{
+
+                    if(data.error != null){
+                      alert(data.error);
+                      return;  
+                    }
+
                     if(data.message.includes("Successfully")){  
                       setUser(null);
                       document.cookie = null;

@@ -1,17 +1,57 @@
-:root{
+:root {
+    /* Primary Color */
     --primary-color: #2A3580;
-    --primary-light-color: #3c4ba8;
-    --primary-dark-color: #1d1d7a;
-    --header-bg-color: #d4dafd;
+    --primary-light-color-1: #404B99;
+    --primary-light-color-2: #505BCF;
+    --primary-light-color-3: #6066D9;
+    --primary-light-color-4: #7072F4;
+    --primary-dark-color-1: #16206F;
+    --primary-dark-color-2: #0F1963;
+    --primary-dark-color-3: #080E56;
+    --primary-dark-color-4: #00064A;
+
+    /* Header Color */
+    --header-bg-color: #bec6ff;
+    --header-text-color: #1b1b1b;
+  
+    /* Side Color */
+    --sidebar-bg-color: #e0e0e0;
+    --sidebar-text-color: #333333;
+    --sidebar-selected-color: #D4DAFD;
+
+    /* Accent Colors */
+    --accent-color-1: #7580A3;
+    --accent-color-2: #8B92B9;
+    --accent-color-3: #A5AFC2;
+    --accent-color-4: #BCBFCB;
+
+    /* Background Colors */
+    --background-color-light: #E6EAF8;
+    --background-color-light-1: #D9DBF1;
+    --background-color-light-2: #C2C7EE;
+    --background-color-dark: #1E255C;
+    --background-color-dark-1: #111648;
+    --background-color-dark-2: #090B33;
+
+    /* Text Colors */
+    --text-color-light: #FFFFFF;
+    --text-color-dark: #333333;
+
+    /* Button Colors */
+    --button-bg-color: var(--primary-light-color);
+    --button-text-color: #FFFFFF;
+
+    /* Border Color */
+    --border-color: var(--primary-dark-color);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-#root{
+#root {
     margin: 0;
     padding: 0;
     font-weight: 400;
@@ -22,4 +62,19 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: var(--primary-light-color-4);
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--accent-color-4);
 }

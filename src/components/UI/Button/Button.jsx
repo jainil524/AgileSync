@@ -1,14 +1,24 @@
+// Button.jsx
 import React from 'react'
 import "../css/Button.css"
 
-function Button({ title, classes=[], isDisabled=false }) {
-    let ButtonAttributes = {
-        className: classes.join(' '),
-        disabled: isDisabled
-    }
+function Button({ title, classes = [], isDisabled = false, hasLoading = false}) {
     return (
-        <button { ...ButtonAttributes } >{ title }</button>
-    )
+        <button 
+            className={classes.join(' ') + (hasLoading ? ' loading' : '')}
+            disabled={isDisabled}
+        >
+            {
+            hasLoading 
+                ? 
+                    (<div>
+                        <img src="../../src/assets/img/loader2.gif" />
+                    </div>) 
+                : 
+                    title
+            }
+        </button>
+    );
 }
 
-export default Button
+export default Button;

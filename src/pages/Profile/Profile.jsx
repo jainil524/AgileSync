@@ -2,9 +2,19 @@ import React, { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext';
 
 import "./css/Profile.css";
+import Button from '../../components/UI/Button/Button';
 
 function Profile() {
-  const {logout} = useContext(UserContext);
+  const { logout } = useContext(UserContext);
+
+  const handleLogout = (e, setIsLoading)=>{
+    console.log("Logout Clicked");
+    setIsLoading(true);
+    logout().then(()=>{
+      setIsLoading(false);
+    });
+  }
+
   return (
     <div className='mainContainer'>
       <div className="themeimg">
@@ -14,11 +24,7 @@ function Profile() {
         <div className="left"></div>
         <div className="right"></div>
       </div>
-      {/* <button onClick={()=>{
-        logout();
-      }}>
-        LogOut
-      </button> */}
+      <Button title="Logout" hasLoading={true} setClick={handleLogout} />
     </div>
   )
 }
