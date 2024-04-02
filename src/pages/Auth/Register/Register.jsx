@@ -83,7 +83,7 @@ function Login() {
                             <Input label="Password" id="password" type="password" placeholder="Enter your password" change={setPassword} error={passwordError} classes='input-box mandatory' />
                         </div>
                         <div>
-                            <Button title="Register" hasLoading={isfetching} setclick={handleSubmitBtnClick}/>
+                            <Button title="Register" hasLoading={isfetching}/>
                         </div>
                     </Form>
 

@@ -4,13 +4,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     flex-shrink: 0;
     /* background-color: #f0f0f0; */
 }
 
 .Login-wrapper .LoginForm{
-    width: 30rem;
+    width: 25rem;
 }
 
 .Login-wrapper div{

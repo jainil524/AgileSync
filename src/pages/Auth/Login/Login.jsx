@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 import Input from '../../../components/Form/InputBox/Input'
@@ -7,7 +7,7 @@ import Button from '../../../components/UI/Button/Button'
 import Form from '../../../components/Form/Form';
 import fetchRequest from '../../../utils/fetchAPIRequest';
 import useFieldValidator from '../../../hooks/useFieldValidator';
-import {UserContext} from '../../../contexts/UserContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 import '../css/Login.css';
 
@@ -28,33 +28,33 @@ function Login() {
 
         let [{ email }, { password }] = useFieldValidator([{ name: "email", value: Email }, { name: "password", value: Password }]);
 
-        console.log(email,password,typeof email,typeof password);
+        console.log(email, password, typeof email, typeof password);
 
         let isEmailValid = email == true;
         let isPasswordValid = password == true;
 
-        setEmailError(email == true?null:email);
-        setPasswordError(password == true?null:password);
+        setEmailError(email == true ? null : email);
+        setPasswordError(password == true ? null : password);
 
-        if(isEmailValid != true || isPasswordValid != true){
+        if (isEmailValid != true || isPasswordValid != true) {
             return;
         }
-        
+
         setIsFetching(true);
         // If validation passes, proceed with form submission
-        const p = fetchRequest("https://backend.agilesync.co/login", { method: "POST", body: JSON.stringify({ email:Email, password:Password }), headers: { "Content-Type": "application/json" } });
+        const p = fetchRequest("https://backend.agilesync.co/login", { method: "POST", body: JSON.stringify({ email: Email, password: Password }), headers: { "Content-Type": "application/json" } });
         p.then((data) => {
             console.log(data);
-            if(data.status !== "success"){
+            if (data.status !== "success") {
                 setFormError(data.message);
-            }else{
+            } else {
                 setCookie('token', data.token, { path: '/' });
                 let data2 = {
                     token: data.token,
                 };
                 setUser(data2);
-                navigate("/app");
-                
+                navigate("/app/dashboard");
+
             }
             // setIsFetching(false);
         }).catch((err) => {

@@ -7,8 +7,8 @@ function IndexLayout() {
 
   return (
     <>
-      <Header />
-      <Outlet/>
+        <Header />
+        <Outlet/>
     </>
   )
 }

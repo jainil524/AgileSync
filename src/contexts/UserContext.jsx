@@ -19,7 +19,9 @@ function UserContextProvider({ children }) {
 
   useEffect(() => {
 
-    if (user == null && (cookies.token != null || cookies.token != undefined)) {
+    if(document.location.pathname == "/") return;
+
+    if (user == null && (cookies.token != null || cookies.token != undefined )) {
       console.log(cookies.token);
       setUser({ token: cookies.token });
 

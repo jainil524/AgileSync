@@ -1,0 +1,123 @@
+
+/* Header */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 38px;
+    /* font-family: "Gobold" */
+}
+
+.navLogo {
+    width: 12rem;
+    height: 4rem;
+}
+
+.navLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bigFont {
+    font-size: 2.2rem;
+}
+
+.navMenu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+}
+
+.navMenu>li>a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+.navBtn {
+    border-radius: 50px;
+    padding: 10px 38px;
+    background-color: var(--primary-light-color-1);
+    color: white;
+    border: none;
+    font-weight: 500;
+    gap: 40px;
+
+    transition: 0.2s all ease-in-out;
+}
+
+.navBtn a{
+    text-decoration: none;
+    color: white;
+
+}
+
+.navBtn:hover {
+    background-color: var(--primary-dark-color-1);
+}
+
+/* Intro */
+
+.outerbox {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerbox {
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    background-color: white;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 35px;
+}
+
+.hero.login{
+    align-items: center;
+}
+
+.heading {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-family: GOBOLD;
+
+    color: #262626;
+}
+
+.description {
+    width:70%;
+    margin-bottom: 1rem;
+    margin-left: .3rem;
+    line-height: 1.2;
+}
+
+.management {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.introPic {
+    height: 450px;
+    margin-top: 1rem;
+}
+
+.rightArrow {
+    font-weight: bold;
+}

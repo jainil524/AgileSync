@@ -1,25 +1,25 @@
-import React, { useContext, useEffect } from 'react';
-import { Navigate, useNavigate, Route, Routes } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useNavigate, Route, Routes } from 'react-router-dom';
 
-import Login from './pages/Auth/Login/Login';
+import LoginDesign from './pages/LandingPage/LoginDesign';
 import IndexRoutes from './routes/IndexRoutes';
-import Register from './pages/Auth/Register/Register';
-import { UserContext } from './contexts/UserContext';
+import RegisterDesign from './pages/LandingPage/RegisterDesign';
+import Landing from './pages/LandingPage/LandingPages';
 
 
 function App() {
-  const {user} = useContext(UserContext);
-  const navigate = useNavigate();
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/app/dashboard" replace={true} />}/>
-        <Route path="/app/*" element={<IndexRoutes/>}/>
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<LoginDesign />} />
+        <Route path="/register" element={<RegisterDesign />} />
+        <Route path="/app/*" element={<IndexRoutes />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
       </Routes>
+
+
     </>
   );
 }
