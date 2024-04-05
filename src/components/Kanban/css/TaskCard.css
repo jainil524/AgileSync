@@ -1,8 +1,6 @@
 .task {
     --task-prt: #ff6b6b; 
-
     width: 100%;
-
     background-color: #ffffff;
     border-radius: 4px;
     padding: .8rem .6rem ;
@@ -12,15 +10,23 @@
     flex-direction: column;
     gap: .6rem;
     border-radius: .4rem;
-    border-left: 3px solid var(--task-prt);
+    border:1px solid rgb(141, 141, 141);
+    font-family: "Lexend Deca";
+    transition: .2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.task.dragging{
+    outline: 2px solid var(--primary-light-color-3)
 }
 
 .task:hover {
-    cursor: pointer;
+    cursor: grab;
+    background-color: var(--task-dragging-color);
 }
 
 .task .tag-container {
     display: flex;
+    row-gap: .37rem;
     column-gap: .43rem;
     flex-wrap: wrap;
 }
@@ -30,7 +36,9 @@
     color: white;
     padding: .2rem .4rem;
     border-radius: 4px;
-    font-size: .8rem;
+    font-size: .6rem;
+    text-transform: uppercase;
+    font-family: "Lexend Deca", sans-serif;
 }
 
 .task .title {
@@ -42,7 +50,8 @@
 }
 
 .task .description {
-    font-size: .9rem;
+    width: 100%;
+    font-size: .8rem;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -53,6 +62,7 @@
 .task .task-info{
     display: flex;
     gap: 1rem;
+    font-size: .6rem;
 }
 
 .task .subtask-estimation{
@@ -63,4 +73,15 @@
 .task .assignees{
     display: flex;
     gap: .5rem;
+}
+
+.MuiAvatar-root.MuiAvatar-circular{
+    width: 1.9rem;
+    height: 1.9rem;
+    font-size: 1rem;
+}
+
+.MuiAvatar-root:hover{
+    cursor: pointer;
+    z-index: 4;
 }

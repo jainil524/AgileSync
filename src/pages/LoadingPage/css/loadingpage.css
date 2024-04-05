@@ -1,0 +1,32 @@
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--primary-dark-color-5);
+}
+.st9 {
+    fill:none;
+    stroke: var(--primary-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
+
+.stroke-animation {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: slide 2s ease-in-out infinite;
+}
+
+@keyframes slide {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}

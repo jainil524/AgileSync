@@ -1,9 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { ImArrowRight2 } from "react-icons/im";
-import { PiKanbanFill } from "react-icons/pi";
 
 import "./css/Landing.css";
-import Login from "../Auth/Login/Login";
 
 function Landing() {
   return (
@@ -34,8 +31,8 @@ function Landing() {
           <div className="hero">
             <div>
               <h1 className="heading">
-                <span className="management">Empowering Collaboration for </span><br />
-                <span>Project Success</span>
+                <span style={{fontSize: "2rem"}}>ELEVATE YOUR PROJECTS WITH</span><br />
+                <span className="management">AGILESYNC</span>
               </h1>
               <p className="description">
                 Unite students and professors for seamless project management. Revolutionize your workflow from proposal to achievement with streamlined features. Join us and transform your projects today!

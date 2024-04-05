@@ -9,7 +9,7 @@ function ProjectsLayout() {
   const styles = {
     display: 'flex',
     flexDirection: 'row',
-    height: '88.6vh',
+    height: '92.5vh',
     width: '100%',
   }
 

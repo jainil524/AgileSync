@@ -8,7 +8,7 @@ function Header() {
         <div className="header">
             <div className="header__logo">
                 <NavLink to="/app/dashboard">
-                    <img className='Logo-img' src="../../../src/assets/img/AGILE-SYNC-LOGO.png" alt=''/>
+                    <div><img className='Logo-img' src="../../../src/assets/img/AGILE-SYNC-TEXT-LOGO.svg" alt=''/></div>    
                 </NavLink>
             </div>
             <div className="header__nav">

@@ -1,12 +1,53 @@
 .board-wrapper{
     width: 100%;
-    height: 80%;
-    background-color: var(--primary-light-color);
+    height: 100%;
+    overflow: hidden;
 }
 
 .board-body {
     min-width:100%;
     display: flex;
-    gap: 1rem;
-    overflow-y: auto;
+    gap: .6rem;
+}
+
+.board-wrapper.skeleton *{
+    color: lightgray !important;
+}
+
+.board-wrapper.skeleton .task{
+    background-color: rgb(150, 150, 150);
+    animation: skeleton-loading .4s infinite linear alternate;
+}
+
+
+.board-body.skeleton .status{
+    background-color: rgb(199, 199, 199);
+}
+
+.board-wrapper.skeleton .status button{
+    background-color: lightgray;
+    color: lightgray;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        opacity: 0.4 ;
+    }
+    100% {
+        opacity: 1 ;
+    }
+}
+
+.popup-wrapper{
+    width: 100dvw;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
 }

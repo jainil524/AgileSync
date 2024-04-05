@@ -36,14 +36,18 @@
 }
 
 .project-container table th{
-    background-color: var(--header-bg-color);
-    color: var(--primary-dark-color);
+    background-color: var(--header-bg-light-color);
+    color: var(--text-color-light);
     padding: 10px;
     text-align: left;
 }
 
 .project-container table td{
     padding: 10px;
+    border-bottom: 1px solid var(--primary-light-color);
+}
+
+.project-container table tr:not(.project-container table tr:last-child){
     border-bottom: 1px solid var(--primary-light-color);
 }
 
