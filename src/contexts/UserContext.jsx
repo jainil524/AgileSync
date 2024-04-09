@@ -22,7 +22,6 @@ function UserContextProvider({ children }) {
     if(document.location.pathname == "/") return;
 
     if (user == null && (cookies.token != null || cookies.token != undefined )) {
-      console.log(cookies.token);
       setUser({ token: cookies.token });
 
       if (cookies.lastVisited != undefined) {
@@ -30,7 +29,6 @@ function UserContextProvider({ children }) {
       } else {
         navigate("/app");
       }
-      console.log(user, cookies.token, cookies.lastVisited);
     } else {
       navigate("/login");
     }
@@ -61,7 +59,7 @@ function UserContextProvider({ children }) {
           navigate("/login")
         }
       }).catch((err) => {
-        console.log(err);
+        alert(err);
       });
   }
 

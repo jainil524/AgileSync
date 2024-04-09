@@ -13,6 +13,19 @@
     border:1px solid rgb(141, 141, 141);
     font-family: "Lexend Deca";
     transition: .2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    position: relative;
+    overflow: hidden;
+}
+
+.task::before{
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: -2px;
+    border-left: 9px solid var(--task-prt);
+    border-bottom: 9px solid transparent;
+    border-top: 9px solid transparent;
+    transform: rotate(-45deg);
 }
 
 .task.dragging{
@@ -32,7 +45,6 @@
 }
 
 .tag-container .tag {
-    background-color: var(--primary-light-color-3);
     color: white;
     padding: .2rem .4rem;
     border-radius: 4px;
@@ -61,27 +73,45 @@
 
 .task .task-info{
     display: flex;
+    align-items: center;
     gap: 1rem;
+    font-size: .6rem;
+    color: #919191;
+}
+
+.task .task-info .enddate{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
     font-size: .6rem;
 }
 
 .task .subtask-estimation{
     display: flex;
-    gap: .5rem;
+    gap: .3rem;
 }
 
-.task .assignees{
+.task .info-wrapper{
     display: flex;
-    gap: .5rem;
+    gap: 1rem;
+    align-items: center;
+}
+.task .assignee{
+    display: flex;
+    justify-content: flex-start;
 }
 
-.MuiAvatar-root.MuiAvatar-circular{
-    width: 1.9rem;
-    height: 1.9rem;
-    font-size: 1rem;
+.MuiCircularProgress-root{
+    position: relative;
 }
 
-.MuiAvatar-root:hover{
-    cursor: pointer;
-    z-index: 4;
+.MuiCircularProgress-root::after{
+    content: attr(data-progress);
+    font-size: .6rem;
+    color: #000000;
+    margin-left: .3rem;
+    position: absolute;
+    top: 8px;
+    left: 1px;
+    transform: rotate(90deg);
 }

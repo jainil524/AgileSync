@@ -2,7 +2,7 @@ import { Avatar, AvatarGroup } from "@mui/material";
 import { Link } from "react-router-dom";
 import React from "react";
 
-import changeDateFormat from "../../../utils/changeDateFormat";
+import { toMMsDD, toDDbsMMbsYY } from "../../../utils/changeDateFormat";
 
 import "./css/ProjectList.css";
 
@@ -97,11 +97,11 @@ function ProjectsList() {
               
               <tr key={index}>
                 <td>{row.id}</td>
-                <td><Link style={{"color":"black",textDecoration:"none"}} to={`/app/project/${row.id}/dashboard`}>{row.projectName}</Link></td>
+                <td className="projectlink"><Link style={{"color":"black",textDecoration:"none"}} to={`/app/project/${row.id}/dashboard`}>{row.projectName}</Link></td>
                 <td>{row.status}</td>
                 <td>{row.completed}</td>
                 <td>{row.nextMilestone}</td>
-                <td>{changeDateFormat(row.startDate)} - {changeDateFormat(row.endDate)}</td>
+                <td><span title={toDDbsMMbsYY(row.startDate)}>{toMMsDD(row.startDate)}</span> - <span title={toDDbsMMbsYY(row.endDate)}>{toMMsDD(row.endDate)}</span></td>
                 <td>
                   <AvatarGroup max={4}>
                     {

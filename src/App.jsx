@@ -21,13 +21,8 @@ function App() {
     };
 
     // Add event listener for readystatechange
-    document.addEventListener('readystatechange', handleLoading);
-
-    // Cleanup function to remove event listener
-    return () => {
-      document.removeEventListener('readystatechange', handleLoading);
-    };
-  }, []);
+    document.addEventListener("readystatechange", handleLoading);
+  });
 
   if (docLoading) {
     return <LoadingPage />;

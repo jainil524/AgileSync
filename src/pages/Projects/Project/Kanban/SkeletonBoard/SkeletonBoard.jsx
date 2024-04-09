@@ -12,20 +12,20 @@ function SkeletonBoard() {
         </div>
         <div className='board-body '>
           <Status>
-            <Task />
-            <Task />
+            <Task task=""/>
+            <Task task=""/>
           </Status>
           <Status>
-            <Task />
-            <Task />
+            <Task task=""/>
+            <Task task=""/>
           </Status>
           <Status>
-            <Task />
-            <Task />
+            <Task task=""/>
+            <Task task=""/>
           </Status>
           <Status>
-            <Task />
-            <Task />
+            <Task task=""/>
+            <Task task=""/>
           </Status>
 
         </div>

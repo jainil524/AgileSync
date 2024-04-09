@@ -4,9 +4,12 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import Task from "../../../../components/Kanban/Task/Task"
 import Status from "../../../../components/Kanban/Status/Status"
-import LoadingPage from '../../../LoadingPage/LoadingPage';
+import Popup from '../../../../components/Popup/Popup';
+
 import './css/KanbanBoard.css'
+
 import SkeletonBoard from './SkeletonBoard/SkeletonBoard';
+import TaskPopup from './TaskPopup/TaskPopup';
 
 
 
@@ -14,6 +17,7 @@ function KanbanBoard() {
 
   const [tasks, setTasks] = useState(null);
   const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const [openedTask, setOpenedTask] = useState(null);
 
   const kanbandata = {
     "status": [
@@ -28,6 +32,10 @@ function KanbanBoard() {
       {
         id: 3,
         title: "DONE"
+      },
+      {
+        id: 4,
+        title: "DEPLOYED"
       }
     ],
     "tasks": {
@@ -62,7 +70,87 @@ function KanbanBoard() {
       "DONE": [
         {
           "id": 7,
-          "title": "Task 7"
+          "title": "Task 7",
+          "tags": [
+            {
+              "id": 1,
+              "title":"tag1",
+              "color":"#FF0000"
+            }, 
+            {
+              "id": 2,
+              "title":"tag2",
+              "color":"#FF0AB0"
+            },
+            {
+              "id": 3,
+              "title":"tag3",
+              "color":"#FA6300"
+            },
+          ],
+          "description": "This is a description",
+          "EndDate": "2021-10-10",
+          "Assigness": [
+            {
+              "id":1,
+              "name":"Jainil Prajapati",
+              "profile_url":"https://randomuser.me/api/portraits"
+            },{
+              "id":2,
+              "name":"Dev Sapariya",
+              "profile_url":null
+            }
+          ],
+          "TotalSubTasks": 5,
+          "CompletedSubTask": 3,
+          "Progress": 50,
+          "Priority": 1
+        },
+        {
+          "id": 8,
+          "title": "Task 8"
+        },
+        {
+          "id": 9,
+          "title": "Task 9"
+        }
+      ],
+      "DEPLOYED": [
+        {
+          "id": 10,
+          "title": "Task 7",
+          "tags": [
+            {
+              "id": 11,
+              "title":"tag1",
+              "color":"#FF0000"
+            }, 
+            {
+              "id": 12,
+              "title":"tag2",
+              "color":"#FF0AB0"
+            },
+            {
+              "id": 13,
+              "title":"tag3",
+              "color":"#FA6300"
+            },
+          ],
+          "description": "This is a description",
+          "EndDate": "2021-10-10",
+          "Assigness": [
+            {
+              "id":1,
+              "name":"Jainil Prajapati",
+              "profile_url":"https://randomuser.me/api/portraits"
+            },{
+              "id":2,
+              "name":"Dev Sapariya",
+              "profile_url":null
+            }
+          ],
+          "TotalSubTasks": 5,
+          "CompletedSubTask": 3
         },
         {
           "id": 8,
@@ -128,11 +216,11 @@ function KanbanBoard() {
                           >
                             {(provided, snapshot) => (
                               <div
-                                onDoubleClick={() => setIsPopupOpened(true)}
+                                onDoubleClick={() => {setIsPopupOpened(true); setOpenedTask(task)}}
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}                              >
-                                <Task isDragging={snapshot.isDragging} title={task.title} />
+                                <Task isDragging={snapshot.isDragging} task={task} />
                               </div>  
                             )}
                           </Draggable>
@@ -148,7 +236,7 @@ function KanbanBoard() {
           </div>
         </div>
 
-        {isPopupOpened && <div className='popup-wrapper'>  <button onClick={() => setIsPopupOpened(false)}>close</button> i am popup </div>}
+        {isPopupOpened && <Popup closePopup={setIsPopupOpened}> <TaskPopup task={openedTask} /> </Popup>}
       </>
     )
   } else {

@@ -20,7 +20,7 @@
 
   
     /* Side Color */
-    --sidebar-bg-color: #e4e8ff89;
+    --sidebar-bg-color: #c1c9fa89;
     --sidebar-text-color: #333333;
     --sidebar-selected-color: #D4DAFD;
 
@@ -88,4 +88,26 @@
 
 ::-webkit-scrollbar-track{
     background-color: var(--accent-color-4);
+}
+
+a {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.MuiAvatar-root.MuiAvatar-circular{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+}
+
+.MuiAvatar-root:hover{
+    cursor: pointer;
+    z-index: 4;
 }

@@ -1,33 +1,40 @@
+import React, { useState } from 'react'
 import { CloseRounded } from '@mui/icons-material'
-import React from 'react'
 
-/**
- * 
- * @param {Event} e 
- */
-function closePopup(e,setIsOpen){
-    e.preventDefault();
-    e.stopPropagation();
+import "./css/Popup.css"
 
-    setIsOpen(false);
-}
-
-function Popup({children}) {
+function Popup({ children, closePopup }) {
 
     const [isOpen, setIsOpen] = useState(false)
 
+    /**
+     * 
+     * @param {Event} e 
+     */
+    function hidePopup(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if((e.target.closest(".popup") != null || e.target.closest(".popup") != undefined)) return;
+
+        setIsOpen(false);
+        closePopup(false);
+    }
+
     return (
-        <div 
-            className={isOpen ? "popup-wrapper popup-open":"popup-wrapper"}
+        <div
+            className={isOpen ? "popup-wrapper popup-open" : "popup-wrapper"}
             onClick={
-                closePopup.bind(setIsOpen)
+                hidePopup
             }
         >
             <div className='popup'>
                 <div className="popup-header">
-                    <span><CloseRounded onClick={closePopup} size={18}/></span>
+                    <span><CloseRounded onClick={hidePopup} size={18} /></span>
                 </div>
+                <div className="popup-body">
                 {children}
+                </div>
             </div>
         </div>
     )
