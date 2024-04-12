@@ -32,7 +32,7 @@ function Task({ task = null, isDragging = false }) {
             ?
             (
               <span className="enddate" title={`Task End-Date: ${new Date(EndDate).toLocaleDateString()}`}>
-                <img src="../../../src/assets/img/Calendar-icon.svg" />
+                <img src="../../../public/img/Calendar-icon.svg" />
                 <span>
                   {
                     toDDsMM(EndDate)
@@ -48,7 +48,7 @@ function Task({ task = null, isDragging = false }) {
             ?
             (
               <span className="subtask-estimation" title={`Sub Tasks: ${CompletedSubTask} out of ${TotalSubTasks} is completed`}>
-                <img src="../../../src/assets/img/SubTask-icon.svg" /><span className="subtask-estimation__value">       {CompletedSubTask}/{TotalSubTasks}</span>
+                <img src="../../../public/img/SubTask-icon.svg" /><span className="subtask-estimation__value">       {CompletedSubTask}/{TotalSubTasks}</span>
               </span>
             )
             :

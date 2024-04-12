@@ -18,7 +18,7 @@ function Profile() {
   return (
     <div className='mainContainer'>
       <div className="themeimg">
-        <img src="../../src/assets/img/COVER_IMG1.webp" alt="" />
+        <img src="../../public/img/COVER_IMG1.webp" alt="" />
       </div>
       <div className="profile-wrapper">
         <div className="left"></div>

@@ -12,7 +12,7 @@ function Button({ title, classes = [], isDisabled = false, hasLoading = false}) 
             hasLoading 
                 ? 
                     (<div>
-                        <img src="../../src/assets/img/loader2.gif" />
+                        <img src="../../public/img/loader2.gif" />
                     </div>) 
                 : 
                     title

@@ -11,7 +11,7 @@ function LoginDesign() {
 
           <div className="navbar">
             <div className="navLogo">
-              <img src="../../../src/assets/img/AGILE-SYNC-LOGO.png" alt="sd" />
+              <img src="../../../public/img/AGILE-SYNC-LOGO.png" alt="sd" />
             </div>
 
             <ul className="navMenu">
@@ -32,7 +32,7 @@ function LoginDesign() {
           <div className="hero login">
 
             <div>
-              <img className="introPic" src="../../../src/assets/img/intro_pic.svg" alt="image" />
+              <img className="introPic" src="../../../public/img/intro_pic.svg" alt="image" />
             </div>
             <div>
               <Login />
