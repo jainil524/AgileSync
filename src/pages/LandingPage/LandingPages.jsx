@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import React from "react";
 
+import IntroPic from "../../../public/img/intro_pic.svg";
 import "./css/Landing.css";
+
+
 
 function Landing() {
   return (
@@ -40,7 +44,7 @@ function Landing() {
               <button className="navBtn"><NavLink to="/login">Sign in</NavLink></button>
             </div>
             <div>
-              <img className="introPic" src="../../../../public/img/intro_pic.svg" alt="image" />
+              <img className="introPic" src={IntroPic} alt="image" />
             </div>
           </div>
 
