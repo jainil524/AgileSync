@@ -40,7 +40,7 @@ function Landing() {
               <button className="navBtn"><NavLink to="/login">Sign in</NavLink></button>
             </div>
             <div>
-              <img className="introPic" src="../../../public/img/intro_pic.svg" alt="image" />
+              <img className="introPic" src="../../../../public/img/intro_pic.svg" alt="image" />
             </div>
           </div>
 
