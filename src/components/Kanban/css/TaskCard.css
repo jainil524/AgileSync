@@ -1,8 +1,6 @@
 .task {
     --task-prt: #ff6b6b; 
-
     width: 100%;
-
     background-color: #ffffff;
     border-radius: 4px;
     padding: .8rem .6rem ;
@@ -12,25 +10,47 @@
     flex-direction: column;
     gap: .6rem;
     border-radius: .4rem;
-    border-left: 3px solid var(--task-prt);
+    border:1px solid rgb(141, 141, 141);
+    font-family: "Lexend Deca";
+    transition: .2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    position: relative;
+    overflow: hidden;
+}
+
+.task::before{
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: -2px;
+    border-left: 9px solid var(--task-prt);
+    border-bottom: 9px solid transparent;
+    border-top: 9px solid transparent;
+    transform: rotate(-45deg);
+}
+
+.task.dragging{
+    outline: 2px solid var(--primary-light-color-3)
 }
 
 .task:hover {
-    cursor: pointer;
+    cursor: grab;
+    background-color: var(--task-dragging-color);
 }
 
 .task .tag-container {
     display: flex;
+    row-gap: .37rem;
     column-gap: .43rem;
     flex-wrap: wrap;
 }
 
 .tag-container .tag {
-    background-color: var(--primary-light-color-3);
     color: white;
     padding: .2rem .4rem;
     border-radius: 4px;
-    font-size: .8rem;
+    font-size: .6rem;
+    text-transform: uppercase;
+    font-family: "Lexend Deca", sans-serif;
 }
 
 .task .title {
@@ -42,7 +62,8 @@
 }
 
 .task .description {
-    font-size: .9rem;
+    width: 100%;
+    font-size: .8rem;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -52,15 +73,45 @@
 
 .task .task-info{
     display: flex;
+    align-items: center;
     gap: 1rem;
+    font-size: .6rem;
+    color: #919191;
+}
+
+.task .task-info .enddate{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    font-size: .6rem;
 }
 
 .task .subtask-estimation{
     display: flex;
-    gap: .5rem;
+    gap: .3rem;
 }
 
-.task .assignees{
+.task .info-wrapper{
     display: flex;
-    gap: .5rem;
+    gap: 1rem;
+    align-items: center;
+}
+.task .assignee{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MuiCircularProgress-root{
+    position: relative;
+}
+
+.MuiCircularProgress-root::after{
+    content: attr(data-progress);
+    font-size: .6rem;
+    color: #000000;
+    margin-left: .3rem;
+    position: absolute;
+    top: 8px;
+    left: 1px;
+    transform: rotate(90deg);
 }

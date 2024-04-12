@@ -1,17 +1,16 @@
 .project-sidebar {
+    width:4.5rem;
     display: flex;
     flex-direction: column;
-    min-width: max(15%,12rem);
     padding: 1rem .7rem;
     background-color: var(--sidebar-bg-color);
     color: var(--text-color-dark);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.134);
     transition: width 0.2s ease;
 }
 
 .project-sidebar__content {
-    flex: 1;
-    overflow-y: auto;
+    display: flex;
 }
 
 .project-sidebar__content ul {
@@ -23,6 +22,7 @@
 }
 
 .project-sidebar__link {
+    box-sizing: content-box;
     display: flex;
     align-items: center;
     padding: 1rem 1rem;
@@ -30,29 +30,73 @@
     text-decoration: none;
     border-radius: 4px;
     gap: .5rem;
+    width: max-content;
     transition: background-color 0.2s ease;
     background-color: transparent;
+    position: relative;
+
+}
+
+.project-sidebar__link:focus-visible::after,
+.project-sidebar__link:focus-visible::before {
+   all: unset;
+}
+
+.project-sidebar__link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 80px;
+    top: 7px;
+    padding: .4rem .8rem;
+    background-color: var(--primary-dark-color-4);
+    box-shadow: 5px 4px 5px rgba(0, 0, 0, 0.386);
+    color: white;
+    border-radius: 4px;
+    font-size: .67rem;
+    font-family: "Lexend Deca";
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    transform: translateY(-20%);
+    user-select: none;
+    pointer-events: none;
+    z-index: 120;
+    border-radius: 7px;
 }
 
 .project-sidebar__link:hover {
     background-color: var(--accent-color-4);
 }
 
-.project-sidebar__link.active,
-.project-sidebar__link.active {
+.project-sidebar__link::before {
+    content: "";
+    position: absolute;
+    left: 75px;
+    top: 11px;
+    border-right: 8px solid var(--primary-dark-color-4);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: translateY(-20%);
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.project-sidebar__link:hover::after,
+.project-sidebar__link:hover::before {
+    transform: translateY(0);
+    opacity: 1;
+
+}
+
+.project-sidebar__link.active{
     background-color: var(--accent-color-3);
 }
 
 .project-sidebar__link span {
     margin-left: 10px;
     flex: 1;
-}
-
-.project-sidebar__link svg {
-    width: 20px;
-    height: 20px;
-    fill: red;
-    fill: var(--text-color-dark);
 }
 
 /* Media query for smaller screens */

@@ -1,23 +1,35 @@
 :root {
     /* Primary Color */
-    --primary-color: #2A3580;
-    --primary-light-color-1: #404B99;
-    --primary-light-color-2: #505BCF;
-    --primary-light-color-3: #6066D9;
-    --primary-light-color-4: #7072F4;
-    --primary-dark-color-1: #16206F;
-    --primary-dark-color-2: #0F1963;
-    --primary-dark-color-3: #080E56;
-    --primary-dark-color-4: #00064A;
+    --primary-color: #4054d8;
+    --primary-light-color-1: rgb(87, 101, 207);
+    --primary-light-color-2: #545fdd;
+    --primary-light-color-3: #767cec;
+    --primary-light-color-4: #8b8dff;
+    --primary-light-color-5: #aaacff;
+    --primary-dark-color-1: #2d3b96;
+    --primary-dark-color-2: #293488;
+    --primary-dark-color-3: #1b2270;
+    --primary-dark-color-4: #111650;
+    --primary-dark-color-5: #0f1346;
 
     /* Header Color */
-    --header-bg-color: #bec6ff;
-    --header-text-color: #1b1b1b;
+    --header-bg-color: var(--primary-dark-color-5);
+    --header-bg-light-color: var(--primary-dark-color-3);
+    --header-default-link-color: white;
+    --header-active-link-color: var(--primary-light-color-5);
+
   
     /* Side Color */
-    --sidebar-bg-color: #e0e0e0;
+    --sidebar-bg-color: #c1c9fa89;
     --sidebar-text-color: #333333;
     --sidebar-selected-color: #D4DAFD;
+
+    /* Task dragging */
+    --task-dragging-color: #dcdcfa ;
+
+    /* status dragging over */
+    --status-dragging-over-color: #dadbff;
+
 
     /* Accent Colors */
     --accent-color-1: #7580A3;
@@ -42,7 +54,7 @@
     --button-text-color: #FFFFFF;
 
     /* Border Color */
-    --border-color: var(--primary-dark-color);
+    --border-color: var(--primary-dark-color-5);
 }
 
 * {
@@ -54,8 +66,7 @@
 #root {
     margin: 0;
     padding: 0;
-    font-weight: 400;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.7px;
     width: 100vw;
     height: 100vh;
     -webkit-font-smoothing: antialiased;
@@ -77,4 +88,26 @@
 
 ::-webkit-scrollbar-track{
     background-color: var(--accent-color-4);
+}
+
+a {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.MuiAvatar-root.MuiAvatar-circular{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+}
+
+.MuiAvatar-root:hover{
+    cursor: pointer;
+    z-index: 4;
 }
