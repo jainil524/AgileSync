@@ -1,8 +1,12 @@
 import React from 'react';
-import "../css/TaskCard.css";
 import { Avatar, AvatarGroup } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+
 import { toDDsMM } from '../../../utils/changeDateFormat';
+
+import CalendarIcon from "../../../../public/img/Calendar-icon.svg"
+import SubTaskIcon from "../../../../public/img/SubTask-icon.svg"
+import "../css/TaskCard.css";
 
 function Task({ task = null, isDragging = false }) {
   let {
@@ -32,7 +36,7 @@ function Task({ task = null, isDragging = false }) {
             ?
             (
               <span className="enddate" title={`Task End-Date: ${new Date(EndDate).toLocaleDateString()}`}>
-                <img src="../../../public/img/Calendar-icon.svg" />
+                <img src={CalendarIcon} />
                 <span>
                   {
                     toDDsMM(EndDate)
@@ -48,7 +52,7 @@ function Task({ task = null, isDragging = false }) {
             ?
             (
               <span className="subtask-estimation" title={`Sub Tasks: ${CompletedSubTask} out of ${TotalSubTasks} is completed`}>
-                <img src="../../../public/img/SubTask-icon.svg" /><span className="subtask-estimation__value">       {CompletedSubTask}/{TotalSubTasks}</span>
+                <img src={SubTaskIcon} /><span className="subtask-estimation__value">       {CompletedSubTask}/{TotalSubTasks}</span>
               </span>
             )
             :
@@ -80,7 +84,7 @@ function Task({ task = null, isDragging = false }) {
             ?
             (
               <div className="progress">
-                <CircularProgress data-progress={100} size={28} variant="determinate" value={100} />
+              <CircularProgress data-progress={100} size={28} variant="determinate" value={100} />
               </div>
             )
             :

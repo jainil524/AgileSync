@@ -1,14 +1,17 @@
 import React from 'react';
 import {  NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
+
+import LogoWithText from '../../../public/img/AGILE-SYNC-TEXT-LOGO.svg';
 import './css/Header.css';
+
 
 function Header() {
     return (
         <div className="header">
             <div className="header__logo">
                 <NavLink to="/app/dashboard">
-                    <div><img className='Logo-img' src="../../../public/img/AGILE-SYNC-TEXT-LOGO.svg" alt=''/></div>    
+                    <div><img className='Logo-img' src={LogoWithText} alt=''/></div>    
                 </NavLink>
             </div>
             <div className="header__nav">

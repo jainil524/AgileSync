@@ -19,16 +19,31 @@ function UserContextProvider({ children }) {
 
   useEffect(() => {
 
-    if(document.location.pathname == "/") return;
+    if (document.location.pathname == "/") return;
 
-    if (user == null && (cookies.token != null || cookies.token != undefined )) {
-      setUser({ token: cookies.token });
+    if (user == null && (cookies.token != null || cookies.token != undefined)) {
+      fetch("https://backend.agilesync.co/protected", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": cookies.token
+        }
+      }).then((response) => {
+        response.json().then((data) => {
+          if (data.error != null) {
+            navigate("/login");
+          } else if (data.email.includes("Successfully")) {
+            setUser({ token: cookies.token });
 
-      if (cookies.lastVisited != undefined) {
-        navigate(decodeURI(cookies.lastVisited));
-      } else {
-        navigate("/app");
-      }
+            if (cookies.lastVisited != undefined) {
+              navigate(decodeURI(cookies.lastVisited));
+            } else {
+              navigate("/app");
+            }
+          }
+        });
+      })
+
     } else {
       navigate("/login");
     }

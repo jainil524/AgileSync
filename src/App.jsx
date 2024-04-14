@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import LoginDesign from './pages/LandingPage/LoginDesign';
 import IndexRoutes from './routes/IndexRoutes';
@@ -13,16 +13,19 @@ function App() {
 
   useEffect(() => {
     const handleLoading = () => {
-      if (document.readyState === 'complete') {
-        setTimeout(() => {
-          setDocLoading(false);
-        }, 1300);
-      }
+      setTimeout(() => {
+        setDocLoading(false);
+      }, 1300);
     };
 
-    // Add event listener for readystatechange
-    document.addEventListener("readystatechange", handleLoading);
-  });
+    // Set the listener for the window load event
+    window.addEventListener('load', handleLoading);
+
+    // Cleanup the listener
+    return () => {
+      window.removeEventListener('load', handleLoading);
+    };
+  }, []); // Empty dependency array ensures this runs only once on mount.
 
   if (docLoading) {
     return <LoadingPage />;

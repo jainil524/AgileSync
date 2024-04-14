@@ -1,5 +1,6 @@
-// Button.jsx
 import React from 'react'
+
+import LoadingGIF from "../../../../public/img/loader2.gif";
 import "../css/Button.css"
 
 function Button({ title, classes = [], isDisabled = false, hasLoading = false}) {
@@ -12,7 +13,7 @@ function Button({ title, classes = [], isDisabled = false, hasLoading = false}) 
             hasLoading 
                 ? 
                     (<div>
-                        <img src="../../public/img/loader2.gif" />
+                        <img src={LoadingGIF} />
                     </div>) 
                 : 
                     title

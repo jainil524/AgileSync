@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import "./css/Landing.css";
 import Login from "../Auth/Login/Login";
 import Register from "../Auth/Register/Register";
+import IntroPic from "../../../public/img/intro_pic.svg";
+import AgileSyncLogo from "../../../public/img/AGILE-SYNC-LOGO.png"
+
 
 function RegisterDesign() {
   return (
@@ -12,7 +15,7 @@ function RegisterDesign() {
 
           <div className="navbar">
             <div className="navLogo">
-              <img src="../../../public/img/AGILE-SYNC-LOGO.png" alt="sd" />
+              <img src={AgileSyncLogo} alt="sd" />
             </div>
 
             <ul className="navMenu">
@@ -33,7 +36,7 @@ function RegisterDesign() {
           <div className="hero login">
 
             <div>
-              <img className="introPic" src="../../../public/img/intro_pic.svg" alt="image" />
+              <img className="introPic" src={IntroPic} alt="image" />
             </div>
             <div>
               <Register />
