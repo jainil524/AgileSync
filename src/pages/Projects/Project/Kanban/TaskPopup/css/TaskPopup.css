@@ -1,0 +1,46 @@
+.task-popup {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.task-popup input[type="text"],
+.task-popup select,
+.task-popup textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 8px;
+}
+
+.task-popup select {
+    background-color: #fff;
+    height: 40px;
+}
+
+.task-popup textarea {
+    height: 100px;
+    resize: none;
+}
+
+.task-popup button {
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+}
+
+.task-popup button:hover {
+    background-color: #004494;
+}

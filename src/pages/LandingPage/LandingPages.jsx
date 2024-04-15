@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import React from "react";
 
 import IntroPic from "../../../public/img/intro_pic.svg";
+import AgileSyncLogo from "../../../public/img/AGILE-SYNC-LOGO.png"
 import "./css/Landing.css";
 
 
@@ -14,7 +15,7 @@ function Landing() {
 
           <div className="navbar">
             <div className="navLogo">
-              <img src="../../../public/img/AGILE-SYNC-LOGO.png" alt="sd" />
+              <img src={AgileSyncLogo} alt="sd" />
             </div>
 
             <ul className="navMenu">

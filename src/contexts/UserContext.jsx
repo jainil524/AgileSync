@@ -17,33 +17,31 @@ function UserContextProvider({ children }) {
     setCookie("lastVisited", document.location.pathname, { path: "/" })
   }, [document.location.pathname]);
 
-  useEffect(() => {
+  useEffect(async () => {
 
     if (document.location.pathname == "/") return;
 
     if (user == null && (cookies.token != null || cookies.token != undefined)) {
-      fetch("https://backend.agilesync.co/protected", {
+      let response = await fetch("https://backend.agilesync.co/protected", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           "Authorization": cookies.token
         }
-      }).then((response) => {
-        response.json().then((data) => {
-          if (data.error != null) {
-            navigate("/login");
-          } else if (data.email.includes("Successfully")) {
-            setUser({ token: cookies.token });
+      });
 
-            if (cookies.lastVisited != undefined) {
-              navigate(decodeURI(cookies.lastVisited));
-            } else {
-              navigate("/app");
-            }
-          }
-        });
-      })
+      let res = await response.json();
+      if (res.error != null) {
+        navigate("/login");
+      } else if (res.email.includes("Successfully")) {
+        setUser({ token: cookies.token });
 
+        if (cookies.lastVisited != undefined) {
+          navigate(decodeURI(cookies.lastVisited));
+        } else {
+          navigate("/app");
+        }
+      }
     } else {
       navigate("/login");
     }

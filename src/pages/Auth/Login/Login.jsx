@@ -56,7 +56,7 @@ function Login() {
                 navigate("/app/dashboard");
 
             }
-            // setIsFetching(false);
+            setIsFetching(false);
         }).catch((err) => {
             console.log(err);
         });

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import "./css/TaskPopup.css";
+
 const TaskPopup = ({ task, onTaskUpdate }) => {
   const [title, setTitle] = useState(task.title);
   const [priority, setPriority] = useState(task.priority);

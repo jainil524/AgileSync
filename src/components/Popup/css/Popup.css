@@ -10,9 +10,23 @@
     align-items: center;
     z-index: 100;
     color: white;
+    box-sizing: border-box;
+}
+
+.popup{
+    width: var(--Width,80%);
+    height: var(--Height,70%);
+}
+
+.popup-header{
+    padding:.6rem .7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
 }
 
 .popup-body{
-    width: 60%;
-    height: 60%;
+    height:100%;
+    overflow: auto;
 }

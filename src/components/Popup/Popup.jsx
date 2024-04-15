@@ -3,7 +3,7 @@ import { CloseRounded } from '@mui/icons-material'
 
 import "./css/Popup.css"
 
-function Popup({ children, closePopup }) {
+function Popup({ children, closePopup , popupSize}) {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -15,7 +15,7 @@ function Popup({ children, closePopup }) {
         e.preventDefault();
         e.stopPropagation();
 
-        if((e.target.closest(".popup") != null || e.target.closest(".popup") != undefined)) return;
+        if ((e.target.closest(".popup") != null || e.target.closest(".popup") != undefined)) return;
 
         setIsOpen(false);
         closePopup(false);
@@ -28,15 +28,15 @@ function Popup({ children, closePopup }) {
                 hidePopup
             }
         >
-            <div className='popup'>
+            <div className='popup' style={popupSize != null ? {"--Width": popupSize[0],"--Height": popupSize[1]} : {}} >
                 <div className="popup-header">
-                    <span><CloseRounded onClick={hidePopup} size={18} /></span>
+                    <span><CloseRounded htmlColor='black' onClick={hidePopup} size={18} /></span>
                 </div>
                 <div className="popup-body">
-                {children}
+                    {children}
                 </div>
             </div>
-        </div>
+        </div> 
     )
 }
 
