@@ -50,17 +50,3 @@ body {
     border: 1px solid #f5c6cb;
     border-radius: 4px;
 }
-
-.status button {
-    background-color: #dc3545;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.status button:hover {
-    background-color: #c82333;
-}

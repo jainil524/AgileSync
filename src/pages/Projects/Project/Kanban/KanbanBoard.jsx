@@ -5,6 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Task from "../../../../components/Kanban/Task/Task"
 import Status from "../../../../components/Kanban/Status/Status"
 import Popup from '../../../../components/Popup/Popup';
+import Button from '../../../../components/UI/Button/Button';
 
 import './css/KanbanBoard.css'
 
@@ -190,7 +191,7 @@ function KanbanBoard() {
       <>
         <div className='board-wrapper'>
           <div className='board-header'>
-            <button>Create Task</button>
+            <Button title="Create Task"/>
           </div>
           <div className='board-body'>
 
