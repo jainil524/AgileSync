@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 import { toMMsDD, toDDbsMMbsYY } from "../../../utils/changeDateFormat";
+import Button from "../../../components/UI/Button/Button"
 
 import "./css/ProjectList.css";
 
@@ -76,7 +77,7 @@ function ProjectsList() {
   return <>
     <div className="project-container">
       <div className="project-header">
-        
+        <Link to="/app/createproject"><Button title="Create Project" /></Link>
       </div>
       <div className="project-body">
         <table>

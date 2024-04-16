@@ -4,8 +4,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { toDDsMM } from '../../../utils/changeDateFormat';
 
-import CalendarIcon from "../../../../public/img/Calendar-icon.svg"
-import SubTaskIcon from "../../../../public/img/SubTask-icon.svg"
+import CalendarIcon from "../../../../public/img/Calendar_icon.svg"
+import SubTaskIcon from "../../../../public/img/SubTask_icon.svg"
 import "../css/TaskCard.css";
 
 function Task({ task = null, isDragging = false }) {

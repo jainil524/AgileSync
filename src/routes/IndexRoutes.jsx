@@ -8,6 +8,7 @@ import IndexLayout from '../layouts/IndexLayout'
 import ProjectList from '../pages/Projects/ProjectList/ProjectsList'
 import ProjectRoutes from '../routes/ProjectRoutes'
 import Error404 from '../pages/Error/Error404';
+import ProjectCreation from "../pages/Projects/ProjectList/ProjectCreation/ProjectCreation";
 
 function IndexRoutes() {
   return (
@@ -15,6 +16,7 @@ function IndexRoutes() {
       <Route path="/*" element={<IndexLayout />}>
         <Route index path="dashboard" element={<Dashboard />} />
         <Route path="projectlist" element={<ProjectList />} />
+        <Route path="createproject" element={ <ProjectCreation/> } />
         <Route path="project/*" element={<ProjectRoutes />} />
         <Route path="profile" element={<Profile />} />
         <Route path="*" element={<Error404 />} />
