@@ -17,34 +17,37 @@ function UserContextProvider({ children }) {
     setCookie("lastVisited", document.location.pathname, { path: "/" })
   }, [document.location.pathname]);
 
-  useEffect(async () => {
+  useEffect(() => {
 
     if (document.location.pathname == "/") return;
+    let userCheck = async () => {
+      if (user == null && (cookies.token != null || cookies.token != undefined)) {
+        let response = await fetch("https://backend.agilesync.co/protected", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": cookies.token
+          }
+        });
 
-    if (user == null && (cookies.token != null || cookies.token != undefined)) {
-      let response = await fetch("https://backend.agilesync.co/protected", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": cookies.token
+        let res = await response.json();
+        if (res.error != null) {
+          navigate("/login");
+        } else if (res.email.includes("Successfully")) {
+          setUser({ token: cookies.token });
+
+          if (cookies.lastVisited != undefined) {
+            navigate(decodeURI(cookies.lastVisited));
+          } else {
+            navigate("/app");
+          }
         }
-      });
-
-      let res = await response.json();
-      if (res.error != null) {
+      } else {
         navigate("/login");
-      } else if (res.email.includes("Successfully")) {
-        setUser({ token: cookies.token });
-
-        if (cookies.lastVisited != undefined) {
-          navigate(decodeURI(cookies.lastVisited));
-        } else {
-          navigate("/app");
-        }
       }
-    } else {
-      navigate("/login");
     }
+
+    userCheck();
   }, []);
 
 

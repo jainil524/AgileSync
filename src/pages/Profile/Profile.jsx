@@ -27,6 +27,6 @@ function Profile() {
       <Button title="Logout" hasLoading={true} setClick={handleLogout} />
     </div>
   )
-}
+} 
 
 export default Profile
