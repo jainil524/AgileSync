@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
 import DashboardIcon from '../../../public/img/Dashboard_icon.svg';
 import KanbanIcon from '../../../public/img/Kanban_icon.svg';
@@ -12,13 +13,15 @@ import './css/ProjectSideBar.css';
 
 function ProjectSidebar() {
 
+  const { projectid } = useParams();
+
   return (
     <div className="project-sidebar" >
 
       <div className="project-sidebar__content">
         <ul>
           <li>
-            <NavLink to="dashboard" data-label="Project Details" className="project-sidebar__link">
+            <NavLink to="projectdetails" data-label="Project Details" className="project-sidebar__link">
               <img src={DashboardIcon} />
             </NavLink>
           </li>

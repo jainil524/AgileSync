@@ -5,6 +5,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import Table from './Table'
+import InviteMember from './InviteMember'
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -54,10 +56,10 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Team-Mates
+        <Table />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Invite Members
+        <InviteMember />
       </CustomTabPanel>
     </Box>
   );

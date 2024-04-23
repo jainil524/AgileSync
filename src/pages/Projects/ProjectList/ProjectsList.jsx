@@ -72,7 +72,7 @@ function ProjectsList() {
                   projectList.map((row, index) => (
                     <tr key={row.project_id}>
                       <td>{index + 1}</td>
-                      <td className="projectlink"><Link style={{ "color": "black", textDecoration: "none" }} to={`/app/project/${row.project_id}/dashboard`}>{row.title}</Link></td>
+                      <td className="projectlink"><Link style={{ "color": "black", textDecoration: "none" }} to={`/app/project/${row.project_id}/projectdetails`}>{row.title}</Link></td>
                       <td>{row.status}</td>
                       <td>{row.tasks.length}</td>
                       <td>{((row.start_date != "" && row.end_date != "") || (row.start_date != null && row.end_date != null)) ? (<span title={toDDbsMMbsYY(row.start_date)}>{toMMsDD(row.start_date)}</span> - <span title={toDDbsMMbsYY(row.end_date)}>{toMMsDD(row.end_date)}</span>) : "-"}</td>

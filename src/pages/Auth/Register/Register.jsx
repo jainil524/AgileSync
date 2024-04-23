@@ -56,7 +56,7 @@ function Login() {
                     token: data.token,
                 };
                 setUser(data2);
-                navigate("/app");
+                navigate("/app/dashboard");
             }
 
             setIsFetching(false);

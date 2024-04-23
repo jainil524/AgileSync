@@ -1,0 +1,47 @@
+.project-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.project-header h1 {
+    font-size: 28px;
+}
+
+.project-id {
+    font-size: 16px;
+    color: #666;
+}
+
+.project-overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.project-info,
+.project-dates {
+    flex: 1;
+}
+
+.project-section {
+    margin-bottom: 20px;
+}
+
+.project-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.project-section p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}

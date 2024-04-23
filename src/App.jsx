@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+
+import About from "./pages/LandingPage/About/About"
 import LoginDesign from './pages/LandingPage/LoginDesign';
 import IndexRoutes from './routes/IndexRoutes';
 import RegisterDesign from './pages/LandingPage/RegisterDesign';
@@ -34,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<LoginDesign />} />
+        <Route path="/about" element={<About />} />
         <Route path="/register" element={<RegisterDesign />} />
         <Route path="/app/*" element={<IndexRoutes />} />
         <Route path="*" element={<Error404 />} />

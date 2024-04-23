@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react"
-
+import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Autocomplete from '@mui/material/Autocomplete';
 import Form from "../../../../components/Form/Form";
@@ -11,25 +11,17 @@ import { Avatar } from "@mui/material";
 function ProjectCreation() {
 
     const [cookies, setCookie] = useCookies(["token"]);
-
+    const navigate = useNavigate();
     const [managerOptions, setManagerOptions] = useState([]);
-    const [teamOptions, setTeamOptions] = useState([]);
-    const [managerValue, setManagerValue] = useState([]);
-    const [managerInputValue, setManagerInputValue] = useState('');
-    const [teamValue, setTeamValue] = useState([]);
-    const [teamInputValue, setTeamInputValue] = useState('');
 
-    // useEffect(() => {
-    //     // Fetch manager data
-    //     fetchManagerData();
-
-    //     // Fetch team data
-    //     fetchTeamData();
-    // }, []);
+    useEffect(() => {
+        // Fetch manager data
+        fetchManagerData();
+    }, []);
 
     const fetchManagerData = () => {
         // Fetch manager data from URL
-        fetch('URL_TO_FETCH_MANAGER_DATA')
+        fetch('https://backend.agilesync.co/get-all-faculty')
             .then(response => response.json())
             .then(data => {
                 setManagerOptions(data);
@@ -39,21 +31,9 @@ function ProjectCreation() {
             });
     };
 
-    const fetchTeamData = () => {
-        // Fetch team data from URL
-        fetch('URL_TO_FETCH_TEAM_DATA')
-            .then(response => response.json())
-            .then(data => {
-                setTeamOptions(data);
-            })
-            .catch(error => {
-                console.error('Error fetching team data:', error);
-            });
-    };
-
     const handleCreateProject = (e) => {
         e.preventDefault();
-        fetch('https://backend.agilesync.co//create-project', {
+        fetch('https://backend.agilesync.co/create-project', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,12 +48,19 @@ function ProjectCreation() {
                     scope: document.getElementById('scope').value,
                     start_date: document.getElementsByClassName('startDate')[0].value,
                     end_date: document.getElementsByClassName('endDate')[0].value,
-                    project_manager: "jainil@gmail.com"
+                    mentor: document.getElementById('projectMentor').value,
                 }),
         }).then(response => response.json())
             .then(data => {
                 // setTeamOptions(data);
                 console.log(data);
+                if(data.message === "Project created"){
+                    alert("Project created successfully")
+                    navigate("/app/projectlist")
+                }else{
+                    alert("Project creation failed!! Please try again...")
+                }
+
             })
             .catch(error => {
                 console.error('Error creating project:', error);
@@ -114,24 +101,11 @@ function ProjectCreation() {
 
                         <div className="projectM">
                             <label>Project Manager</label>
-                            <Autocomplete
-                                options={managerOptions}
-                                getOptionLabel={(option) => option.name}
-                                value={managerValue}
-                                onChange={(event, newValue) => {
-                                    setManagerValue(newValue);
-                                }}
-                                inputValue={managerInputValue}
-                                onInputChange={(event, newInputValue) => {
-                                    setManagerInputValue(newInputValue);
-                                }}
-                                renderInput={(params) => <Box component="li" {...params}>
-                                    {params.InputProps?.startAdornment ? (
-                                        <Avatar src={params.InputProps?.startAdornment.props.src} />
-                                    ) : null}
-                                    {params.inputProps.value}
-                                </Box>}
-                            />
+                            <select id="projectMentor" name="mentor">
+                                {managerOptions.map((option) => (
+                                    <option value={option.email}>{option.name}</option>
+                                ))}
+                            </select>
                         </div>
                         <div className="dateWrapper">
                             <div className="form-group">
@@ -143,29 +117,6 @@ function ProjectCreation() {
                                 <label>End Date:</label>
                                 <input className="endDate" type="date" name="end_date" id="" />
                             </div>
-                        </div>
-
-                        <div className="form-group">
-                            <label>Team Mates</label>
-                            <Autocomplete
-                                value={teamValue}
-                                multiple={true}
-                                onChange={(event, newValue) => {
-                                    setTeamValue(newValue);
-                                }}
-                                inputValue={teamInputValue}
-                                onInputChange={(event, newInputValue) => {
-                                    setTeamInputValue(newInputValue);
-                                }}
-                                options={teamOptions}
-                                renderInput={(params) => <Box component="li" {...params}>
-                                    {params.inputProps.value}
-                                </Box>}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="requirements">Upload File:</label>
-                            <input type="file" id="requirements" name="requirements" />
                         </div>
                         <div className="SubmitButton">
                             <button onClick={handleCreateProject}>Create Project</button>

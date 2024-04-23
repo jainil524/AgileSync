@@ -25,9 +25,6 @@ function RegisterDesign() {
               <li>
                 <NavLink to="/about">ABOUT</NavLink>
               </li>
-              <li>
-                <NavLink to="/about">CONTACT</NavLink>
-              </li>
               <button className="navBtn"><NavLink to="/register">Sign up</NavLink></button>
               <button className="navBtn"><NavLink to="/login">Sign in</NavLink></button>
             </ul>

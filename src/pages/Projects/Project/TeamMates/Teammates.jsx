@@ -7,7 +7,6 @@ function Teammates() {
   return (
     <>
       <NavBar />
-      <Table />
     </>
   )
 }
