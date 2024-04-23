@@ -23,13 +23,7 @@ function createData(name, email, skills) {
 }
 
 const rows = [
-  createData('Ramlal', 'Ram@gmail.com', ['Java', 'Python', 'C++','app development','web-development','unity-development','remote-sensing']),
-  createData('Ranchhod-das', 'RDas@gmail.com', ['Java', 'C']),
-  createData('Mohanlal', 'Mohu@gmail.com', ['Python', 'C++', 'App Development']),
-  createData('Manshukhkaka', 'Manshukhkaka@gmail.com', ['Java', 'Python']),
-  createData('khagesh', 'Khagesh@gmail.com', ['Java', 'C++']),
-  createData('Kanta', 'kanta@gmail.com', ['java', 'C++', 'Web-Development']),
-  createData('Ganga', 'gangu@gmail.com', ['java', 'C', 'Python']),
+
 ];
 
 export default function ColumnGroupingTable() {

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Routes, Route } from "react-router-dom"
 
+import Discussion from "../pages/Projects/Project/Discussion/Discussion"
 import ProjectDetail from "../pages/Projects/Project/Project"
 import KanbanBoard from "../pages/Projects/Project/Kanban/KanbanBoard"
 import Teammates from "../pages/Projects/Project/TeamMates/Teammates"
@@ -15,6 +16,7 @@ function ProjectRoutes() {
         <Route index path="projectdetails" element={<ProjectDetail />} />
         <Route path="kanban" element={<KanbanBoard />} />
         <Route path="teammates" element={<Teammates />} />
+        <Route path="dicussion" element={<Discussion />} />
         <Route path="*" element={<Error404 />} />
       </Route>
     </Routes>

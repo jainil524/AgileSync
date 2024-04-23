@@ -43,12 +43,12 @@ function InviteMember() {
     const handleInviteClick = () => {
         let selectedUserEmails = selectedUsers.map(user => user.email);
         let project_id = window.location.pathname.split('/')[3];
-        console.log(selectedUsers);
+        console.log(selectedUsers, cookies);
         fetch('https://backend.agilesync.co/add-team-member', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": cookies[0].token,
+                "Authorization": cookies.token,
             },
             body: JSON.stringify({
                 project_id: project_id,
@@ -56,7 +56,7 @@ function InviteMember() {
             })
         }).then(response => response.json()).then(data => {
             console.log(data);
-            if (data.status === 200) {
+            if (data.status === "success") {
                 alert("Team Members Added Successfully");
                 window.location.reload();
             } else {
@@ -71,6 +71,7 @@ function InviteMember() {
         // Add the selected user to the list
         setSelectedUsers([...selectedUsers, user]);
         target.closest('tr').remove();
+        
     };
 
     return (

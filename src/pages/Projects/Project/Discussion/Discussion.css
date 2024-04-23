@@ -1,0 +1,25 @@
+.document-upload-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.document-upload-container h1 {
+    margin-bottom: 10px;
+}
+
+.document-upload-container input[type="file"] {
+    margin: 20px auto;
+}
+
+.document-upload-container p {
+    margin-bottom: 10px;
+}
+
+.document-upload-container button {
+    margin-top: 20px;
+}
