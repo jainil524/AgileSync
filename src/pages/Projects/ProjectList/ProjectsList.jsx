@@ -29,7 +29,7 @@ function ProjectsList() {
         "Content-Type": "application/json",
         "Authorization": cookies[0]["token"]
       },
-    }).then((response) => {
+    }).then((response) => { 
       // Return the parsed JSON data here
       return response.json();
     }).then((data) => {

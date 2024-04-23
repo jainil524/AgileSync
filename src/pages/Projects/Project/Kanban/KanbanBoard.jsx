@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useCookies } from 'react-cookie';
 
 import Task from "../../../../components/Kanban/Task/Task"
 import Status from "../../../../components/Kanban/Status/Status"
@@ -15,155 +16,36 @@ import TaskPopup from './TaskPopup/TaskPopup';
 
 
 function KanbanBoard() {
-
+  const [cookie, setCookie] = useCookies();
   const [tasks, setTasks] = useState(null);
   const [isPopupOpened, setIsPopupOpened] = useState(false);
   const [openedTask, setOpenedTask] = useState(null);
 
-  const kanbandata = {
-    "status": [
-      {
-        id: 1,
-        title: "TODO"
-      },
-      {
-        id: 2,
-        title: "IN PROGRESS"
-      },
-      {
-        id: 3,
-        title: "DONE"
-      },
-      {
-        id: 4,
-        title: "DEPLOYED"
+  useEffect(() => {
+    async function fetchData() {
+      let headersList = {
+        "Accept": "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNoaW50YW5AZ21haWwuY29tIiwiZXhwIjoxNzEzOTUzNTUxfQ.WmTwWQy1UOZaZH1KuAfQNG8HvtdHpAhONrtRe9XPHPE",
+        "Content-Type": "application/json"
       }
-    ],
-    "tasks": {
-      "TODO": [
-        {
-          "id": 1,
-          "title": "Task 1"
-        },
-        {
-          "id": 2,
-          "title": "Task 2"
-        },
-        {
-          "id": 3,
-          "title": "Task 3"
-        }
-      ],
-      "IN PROGRESS": [
-        {
-          "id": 4,
-          "title": "Task 4"
-        },
-        {
-          "id": 5,
-          "title": "Task 5"
-        },
-        {
-          "id": 6,
-          "title": "Task 6"
-        }
-      ],
-      "DONE": [
-        {
-          "id": 7,
-          "title": "Task 7",
-          "tags": [
-            {
-              "id": 1,
-              "title":"tag1",
-              "color":"#FF0000"
-            }, 
-            {
-              "id": 2,
-              "title":"tag2",
-              "color":"#FF0AB0"
-            },
-            {
-              "id": 3,
-              "title":"tag3",
-              "color":"#FA6300"
-            },
-          ],
-          "description": "This is a description",
-          "EndDate": "2021-10-10",
-          "Assigness": [
-            {
-              "id":1,
-              "name":"Jainil Prajapati",
-              "profile_url":"https://randomuser.me/api/portraits"
-            },{
-              "id":2,
-              "name":"Dev Sapariya",
-              "profile_url":null
-            }
-          ],
-          "TotalSubTasks": 5,
-          "CompletedSubTask": 3,
-          "Progress": 50,
-          "Priority": 1
-        },
-        {
-          "id": 8,
-          "title": "Task 8"
-        },
-        {
-          "id": 9,
-          "title": "Task 9"
-        }
-      ],
-      "DEPLOYED": [
-        {
-          "id": 10,
-          "title": "Task 7",
-          "tags": [
-            {
-              "id": 11,
-              "title":"tag1",
-              "color":"#FF0000"
-            }, 
-            {
-              "id": 12,
-              "title":"tag2",
-              "color":"#FF0AB0"
-            },
-            {
-              "id": 13,
-              "title":"tag3",
-              "color":"#FA6300"
-            },
-          ],
-          "description": "This is a description",
-          "EndDate": "2021-10-10",
-          "Assigness": [
-            {
-              "id":1,
-              "name":"Jainil Prajapati",
-              "profile_url":"https://randomuser.me/api/portraits"
-            },{
-              "id":2,
-              "name":"Dev Sapariya",
-              "profile_url":null
-            }
-          ],
-          "TotalSubTasks": 5,
-          "CompletedSubTask": 3
-        },
-        {
-          "id": 8,
-          "title": "Task 8"
-        },
-        {
-          "id": 9,
-          "title": "Task 9"
-        }
-      ]
+
+      let bodyContent = JSON.stringify({
+        "project_id": "5291492"
+      });
+
+      let response = await fetch("https://backend.agilesync.co/get-project", {
+        method: "GET",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      let data = await response.json();
+      console.log(data);
     }
-  };
+
+    fetchData();
+  }, []);
 
   // to make the tasks stay in the position after dragged and placed in the new position
   const updateTasks = (result) => {
@@ -179,24 +61,17 @@ function KanbanBoard() {
     setTasks({ ...tasks });
   }
 
-  // to simulate the loading of the tasks and set the tasks after 800ms and then display the tasks
-  useEffect(() => {
-    setTimeout(() => {
-      setTasks(kanbandata["tasks"]);
-    }, 800);
-  }, []);
-
   if (tasks != null) {
     return (
       <>
         <div className='board-wrapper'>
           <div className='board-header'>
-            <Button title="Create Task"/>
+            <Button title="Create Task" />
           </div>
           <div className='board-body'>
 
             <DragDropContext onDragEnd={updateTasks}>
-              {kanbandata["status"].map((status, ind) => (
+              {tasks && tasks["status"].map((status, ind) => (
                 <Droppable
                   key={status.id}
                   type="COLUMN"
@@ -217,12 +92,12 @@ function KanbanBoard() {
                           >
                             {(provided, snapshot) => (
                               <div
-                                onDoubleClick={() => {setIsPopupOpened(true); setOpenedTask(task)}}
+                                onDoubleClick={() => { setIsPopupOpened(true); setOpenedTask(task) }}
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}                              >
                                 <Task isDragging={snapshot.isDragging} task={task} />
-                              </div>  
+                              </div>
                             )}
                           </Draggable>
                         ))}
