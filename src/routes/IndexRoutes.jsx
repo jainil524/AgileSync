@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Routes, Route } from "react-router-dom"
 
-import Dashboard from "../pages/Dashboard/Dashboard"
+import Dashboard from "../pages/DashBoard/Dashboard"
 import Profile from "../pages/Profile/Profile"
 import IndexLayout from '../layouts/IndexLayout'
 import ProjectList from '../pages/Projects/ProjectList/ProjectsList'

@@ -13,9 +13,9 @@ function App() {
 
   useEffect(() => {
     const handleLoading = () => {
-      setTimeout(() => {
-        setDocLoading(false);
-      }, 1300);
+        setTimeout(() => {
+          setDocLoading(false);
+        }, 1300);
     };
 
     // Set the listener for the window load event
@@ -25,7 +25,7 @@ function App() {
     return () => {
       window.removeEventListener('load', handleLoading);
     };
-  }, []); // Empty dependency array ensures this runs only once on mount.
+  }, [document.readyState]); // Empty dependency array ensures this runs only once on mount.
 
   if (docLoading) {
     return <LoadingPage />;

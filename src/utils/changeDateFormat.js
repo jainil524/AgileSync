@@ -2,6 +2,8 @@ let months = ["January", "February", "March", "April", "May", "June", "July", "A
 
 export function toMMsDD(date) {
     
+    if(date == "" && date != null) return "-";
+
     let d = new Date(date);
     let month = months[d.getMonth()];
 
@@ -9,6 +11,7 @@ export function toMMsDD(date) {
 }
 
 export function toDDsMM(date) {
+    if(date == "" && date != null) return "-";
     
     let d = new Date(date);
     let month = months[d.getMonth()];
@@ -17,6 +20,7 @@ export function toDDsMM(date) {
 }
 
 export function toMMDD_Y(date) {
+    if(date == "" && date != null) return "-";
     
     let d = new Date(date);
     let month = months[d.getMonth()];
@@ -25,6 +29,7 @@ export function toMMDD_Y(date) {
 }
 
 export function toMMDD_YY(date) {
+    if(date == "" && date != null) return "-";
     
     let d = new Date(date);
     let month = months[d.getMonth()];
@@ -33,14 +38,20 @@ export function toMMDD_YY(date) {
 }
 
 export function toDDbsMMbsYY(date) {
+    if(date == "" && date != null) return "-";
     
     let d = new Date(date);
+
+    console.log(d,date);
+
     let month = months[d.getMonth()];
+
 
     return `${d.getDate()}/ ${month.substring(0,3)}/ ${(d.getFullYear())}`;
 }
 
 export function toYYbsMMbsDD(date) {
+    if(date == "" && date != null) return "-";
     
     let d = new Date(date);
     let month = months[d.getMonth()];
