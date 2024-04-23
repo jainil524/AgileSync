@@ -20,7 +20,6 @@ function App() {
         }, 1300);
     };
 
-    // Set the listener for the window load event
     window.addEventListener('load', handleLoading);
 
     // Cleanup the listener
