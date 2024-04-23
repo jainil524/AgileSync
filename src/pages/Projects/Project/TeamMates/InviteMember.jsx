@@ -5,7 +5,7 @@ import Button from '../../../../components/UI/Button/Button';
 import { useCookies } from 'react-cookie';
 
 function InviteMember() {
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies, setCookie] = useCookies();
     const [users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedUsers, setSelectedUsers] = useState([]);
