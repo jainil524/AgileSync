@@ -8,14 +8,16 @@ const ProjectDetail = () => {
     const [project, setProject] = React.useState({});
 
     useEffect(() => {
-        let project = window.location.pathname.split('/');
-        let projectid = project[project.length-2];
-        fetch(`https://backend.agilesync.co/get-project?project_id=${projectid}`, {
-            method: 'GET',
+        let projectid = window.location.pathname.split('/')[3]
+        fetch(`https://backend.agilesync.co/get-project`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': cookies[0]['token']
-            }
+                'Authorization': JSON.parse(localStorage.getItem('user')).token
+            },
+            body: JSON.stringify({
+                'project_id': projectid
+            })
         }).then((response) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

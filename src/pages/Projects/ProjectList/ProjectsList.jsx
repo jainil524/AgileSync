@@ -77,7 +77,7 @@ function ProjectsList() {
                       <td className="projectlink"><Link style={{ "color": "black", textDecoration: "none" }} to={`/app/project/${row.project_id}/projectdetails`}>{row.title}</Link></td>
                       <td>{row.status}</td>
                       <td>{row.tasks.length}</td>
-                      <td>{((row.start_date != "" && row.end_date != "") || (row.start_date != null && row.end_date != null)) ? (<span title={toDDbsMMbsYY(row.start_date)}>{toMMsDD(row.start_date)}</span> - <span title={toDDbsMMbsYY(row.end_date)}>{toMMsDD(row.end_date)}</span>) : "-"}</td>
+                      <td><span title={row.start_date}>{row.start_date}</span> - <span title={row.end_date}>{row.end_date}</span></td>
                       <td>
                         {
                           row.team.length > 0 ?

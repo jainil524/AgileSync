@@ -8,7 +8,7 @@ import logo from '../../../public/img/anime.jpg';
 
 function Profile() {
   const { logout } = useContext(UserContext);
-  const cookies = useCookies()
+  const cookies   = useCookies()
   const [editMode, setEditMode] = useState(false);
   const [user, setUser] = useState({}); 
   const [name, setName] = useState('Name');
@@ -35,6 +35,24 @@ function Profile() {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("https://backend.agilesync.co/get-skills", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        email: JSON.parse(localStorage.getItem("user")).email 
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setSkills(data.skills);
+      })
+      .catch(error => {
+        console.error('Error fetching skills:', error);
+      });
+  }, []);
   
   const handleLogout = (e) => {
     logout();

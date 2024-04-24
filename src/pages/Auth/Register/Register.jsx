@@ -54,7 +54,11 @@ function Login() {
                 setCookie('token', data.token, { path: '/' });
                 let data2 = {
                     token: data.token,
+                    email: Email
                 };
+
+                localStorage.setItem("user", JSON.stringify(data2));
+
                 setUser(data2);
                 navigate("/app/dashboard");
             }

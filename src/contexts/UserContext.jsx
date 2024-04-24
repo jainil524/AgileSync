@@ -34,12 +34,15 @@ function UserContextProvider({ children }) {
         if (res.error != null) {
           navigate("/login");
         } else if (res.email.includes("Successfully")) {
-          setUser({ token: cookies.token });
+          setUser({ 
+            email: res.email,
+            token: cookies.token 
+          });
 
           if (cookies.lastVisited != undefined) {
             navigate(decodeURI(cookies.lastVisited));
           } else {
-            navigate("/app");
+            navigate("/app/dashboard");
           }
         }
       } else {

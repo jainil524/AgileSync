@@ -22,14 +22,13 @@ function DocumentUpload() {
     const handleUpload = async (e) => {
         console.log(document.querySelector("input[type='file']").files[0]);
         let formdata = new FormData();
-        formdata.append('file', document.querySelector("input[type='file']").files[0]);
+        formdata.append('document   ', document.querySelector("input[type='file']").files[0]);
         formdata.append('project_id', projectId);
-
-        await fetch('https://7825-2409-40c1-3-a9dc-9c21-8f07-dced-9cd7.ngrok-free.app/upload', {
+        console.log(formdata);
+        await fetch('https://backend.agilesync.co/add-project-document', {
             method: 'POST',
             headers: {
-                "Content-Type": "multipart/form-data",
-                'Authorization': Cookie.token
+                "Content-Type": "multipart/form-data"
             },
             body: formdata
         })
@@ -55,7 +54,7 @@ function DocumentUpload() {
             <h1>Create Your Personalized Chatbot</h1>
             <p>Specific to Your Project</p>
             <p>To improve its strength, upload your requirement document.</p>
-            <form action='https://7825-2409-40c1-3-a9dc-9c21-8f07-dced-9cd7.ngrok-free.app/upload' method='POST' encType="multipart/form-data">  
+            <form>  
             <input
                 type="file"
                 name='document'
@@ -63,7 +62,7 @@ function DocumentUpload() {
                 onChange={handleFileChange}
             />
             <input type="hidden" name="project_id" value={projectId}/>
-            <button onClick={handleUpload} type="submit">Add Document</button>
+            <button onClick={handleUpload} type="button">Add Document</button>
             </form>
             {file && <p>Selected File: {file.name}</p>}
             <button><a  style={{"color":"white"}} href={`http://chat.agilesync.co/?id=${projectId}`} target="_blank" rel="noreferrer" >Create ChatBot</a></button>
