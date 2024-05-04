@@ -11,10 +11,11 @@ import Landing from './pages/LandingPage/LandingPages';
 import Error404 from './pages/Error/Error404';
 
 function App() {
-  const [docLoading, setDocLoading] = useState(true);
+  const [docLoading, setDocLoading] = useState(false);
 
   useEffect(() => {
     const handleLoading = () => {
+      setDocLoading(true);
       setTimeout(() => {  
           setDocLoading(false);
         }, 1300);
