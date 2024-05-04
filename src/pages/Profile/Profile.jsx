@@ -1,4 +1,4 @@
-import React, { useState, useMemo,useContext, useEffect } from 'react'
+import React, { useState, useMemo, useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContext';
 import { useCookies } from 'react-cookie';
 import "./css/Profile.css";
@@ -8,9 +8,9 @@ import logo from '../../../public/img/anime.jpg';
 
 function Profile() {
   const { logout } = useContext(UserContext);
-  const cookies   = useCookies()
+  const cookies = useCookies()
   const [editMode, setEditMode] = useState(false);
-  const [user, setUser] = useState({}); 
+  const [user, setUser] = useState({});
   const [name, setName] = useState('Name');
   const [email, setEmail] = useState('');
   const [designation, setDesignation] = useState('Designation');
@@ -41,8 +41,8 @@ function Profile() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ 
-        email: JSON.parse(localStorage.getItem("user")).email 
+      body: JSON.stringify({
+        email: JSON.parse(localStorage.getItem("user")).email
       })
     })
       .then(response => response.json())
@@ -53,7 +53,7 @@ function Profile() {
         console.error('Error fetching skills:', error);
       });
   }, []);
-  
+
   const handleLogout = (e) => {
     logout();
   }
@@ -78,7 +78,7 @@ function Profile() {
           'Content-Type': 'application/json',
           "Authorization": cookies[0]["token"],
         },
-        
+
         body: JSON.stringify({ skills }),
       })
         .then(response => response.json())
@@ -104,7 +104,7 @@ function Profile() {
       colorMap[skill] = colors[randomIndex];
     });
     return colorMap;
-  }, [skills]); // Depend on skills array
+  }, []); // Depend on skills array
 
 
   return (
@@ -114,9 +114,12 @@ function Profile() {
       </div>
       <div className="profile-page">
         <div className="left-section">
-          <img className="avatar" src={user.profile_picture != null && user.profile_picture != "" ? user.profile_picture :logo } alt="avatar" />
+          <label htmlFor="imageInput">
+            <img className="avatar" src={user.profile_picture != null && user.profile_picture != "" ? user.profile_picture : logo} alt="avatar" />
+          </label>
+          <input type="file" id="imageInput" style={{ display: 'none' }} />
           <div className="user-info">
-        <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
             <h1>{user.name}</h1>
             <p><a href={`mailto: ${user.email}`}>{user.email}</a></p>
           </div>
@@ -145,23 +148,24 @@ function Profile() {
                   )}
                 </div>
               ))}
-              {editMode && (
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Add new skill"
-                    value={newSkill}
-                    onChange={(e) => setNewSkill(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        handleAddSkill();
-                      }
-                    }}
-                  />
-                  <button type='button' className="add-skill-button" onClick={handleAddSkill}>Add</button>
-                </div>
-              )}
+
             </div>
+            {editMode && (
+              <div style={{ marginTop: "1.4rem" }}>
+                <input
+                  type="text"
+                  placeholder="Add new skill"
+                  value={newSkill}
+                  onChange={(e) => setNewSkill(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleAddSkill();
+                    }
+                  }}
+                />
+                <button type='button' className="add-skill-button" onClick={handleAddSkill}>Add</button>
+              </div>
+            )}
           </form>
         </div>
       </div>

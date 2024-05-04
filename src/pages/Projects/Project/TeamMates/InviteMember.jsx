@@ -67,46 +67,53 @@ function InviteMember() {
         });
     };
 
-    const handleAddUser = (target,user) => {
+    const handleAddUser = (target, user) => {
         // Add the selected user to the list
         setSelectedUsers([...selectedUsers, user]);
         target.closest('tr').remove();
-        
+
     };
 
     return (
-        <div className="invite-member-container">
+        <div className="invite-member-container" style={{ width: "100%" }}>
             <button onClick={handleInviteClick}>Invite</button>
-            <h1>Invite Members</h1>
-            <div className="user-list">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                    <button onClick={({target}) => handleAddUser(target,user)}>Add</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-            <div className="selected-users">
-                <h2>Selected Users</h2>
-                <ul>
-                    {selectedUsers.map((user) => (
-                        <li key={user.id} data-email={user.email}>{user.name} - {user.email}</li>
-                    ))}
-                </ul>
+            <div style={{ display: "flex", justifyContent: "space-around", width: "100%" }}>
+                <div style={{ width: "30%" }}>
+                    <div className="selected-users">
+                        <h2>Selected Users</h2>
+                        <ul>
+                            {selectedUsers.map((user) => (
+                                <li key={user.id} data-email={user.email}>{user.name} - {user.email}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h1>Invite Members</h1>
+                    <div className="user-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map((user) => (
+                                    <tr key={user.id}>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td>
+                                            <button onClick={({ target }) => handleAddUser(target, user)}>Add</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const handleLoading = () => {
-      setTimeout(() => {
+      setTimeout(() => {  
           setDocLoading(false);
         }, 1300);
     };

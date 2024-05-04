@@ -88,13 +88,7 @@ export default function ColumnGroupingTable() {
                       ))}
                     </div>
                   </TableCell>
-                  <TableCell align="right">
-                    <Stack direction="row" spacing={2}>
-                      <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDelete(index)}>
-                        Delete
-                      </Button>
-                    </Stack>
-                  </TableCell>
+                      
                 </TableRow>
               ))}
           </TableBody>
